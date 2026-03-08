@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Configuration</title>
+    <style>
+        body {
+            font-family: Tahoma, sans-serif;
+            background: linear-gradient(135deg, #1e5799 0%, #207cca 50%, #2989d8 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            max-width: 500px;
+            text-align: center;
+        }
+        h1 { color: #333; margin-bottom: 20px; }
+        p { color: #666; margin-bottom: 20px; }
+        .btn {
+            padding: 12px 24px;
+            margin: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .btn-danger { background: #cc0000; color: white; }
+        .btn-warning { background: #ff9900; color: white; }
+        .btn-primary { background: #0066cc; color: white; }
+        .btn:hover { opacity: 0.9; }
+        .status { margin-top: 20px; padding: 15px; border-radius: 4px; display: none; }
+        .status.success { background: #d4edda; color: #155724; display: block; }
+        .status.error { background: #f8d7da; color: #721c24; display: block; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔄 Reset Configuration</h1>
+        <p>เลือกวิธีการ Reset ที่ต้องการ:</p>
+        
+        <button class="btn btn-warning" onclick="resetIconsAndCV()">
+            🖼️ Reset Icons & CV Image Only
+        </button>
+        <br>
+        <button class="btn btn-danger" onclick="resetAll()">
+            ⚠️ Reset ALL Settings
+        </button>
+        <br><br>
+        <button class="btn btn-primary" onclick="window.location.href='index.html'">
+            🏠 Go to Main Site
+        </button>
+        
+        <div id="status" class="status"></div>
+    </div>
+
+    <script>
+        const CONFIG_KEY = 'xp_portfolio_config';
+        
+        function showStatus(message, type) {
+            const status = document.getElementById('status');
+            status.textContent = message;
+            status.className = 'status ' + type;
+        }
+        
+        function resetIconsAndCV() {
+            try {
+                const config = JSON.parse(localStorage.getItem(CONFIG_KEY) || '{}');
+                
+                // Remove custom icons
+                if (config.images) {
+                    delete config.images.icons;
+                    delete config.images.cvImage;
+                }
+                
+                localStorage.setItem(CONFIG_KEY, JSON.stringify(config));
+                showStatus('✅ Icons และ CV Image ถูก Reset แล้ว! กรุณารีเฟรชหน้า index.html', 'success');
+            } catch (e) {
+                showStatus('❌ Error: ' + e.message, 'error');
+            }
+        }
+        
+        function resetAll() {
+            if (confirm('⚠️ คุณแน่ใจหรือไม่ที่จะ Reset การตั้งค่าทั้งหมด?')) {
+                try {
+                    localStorage.removeItem(CONFIG_KEY);
+                    localStorage.removeItem('xp_admin_password');
+                    showStatus('✅ การตั้งค่าทั้งหมดถูก Reset แล้ว! กรุณารีเฟรชหน้า index.html', 'success');
+                } catch (e) {
+                    showStatus('❌ Error: ' + e.message, 'error');
+                }
+            }
+        }
+    </script>
+</body>
+</html>

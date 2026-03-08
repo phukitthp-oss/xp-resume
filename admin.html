@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - XP Portfolio</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Login Screen -->
+        <div class="admin-login" id="adminLogin">
+            <div class="login-box">
+                <h1>🔐 Admin Panel</h1>
+                <p>Enter password to access content management</p>
+                <input type="password" id="adminPassword" placeholder="Enter password">
+                <button onclick="adminAuth()">Login</button>
+                <p class="hint">Default password: admin123</p>
+            </div>
+        </div>
+
+        <!-- Admin Panel -->
+        <div class="admin-panel" id="adminPanel" style="display: none;">
+            <header class="admin-header">
+                <h1>⚙️ XP Portfolio Admin Panel</h1>
+                <button onclick="logout()" class="logout-btn">Logout</button>
+            </header>
+
+            <nav class="admin-nav">
+                <button class="nav-btn active" onclick="showSection('wallpaper')">🖼️ Wallpaper</button>
+                <button class="nav-btn" onclick="showSection('bootscreen')">🚀 Boot Screen</button>
+                <button class="nav-btn" onclick="showSection('icons')">📁 Desktop Icons</button>
+                <button class="nav-btn" onclick="showSection('content')">📝 Content</button>
+                <button class="nav-btn" onclick="showSection('aboutme')">ℹ️ About Me</button>
+                <button class="nav-btn" onclick="showSection('resume')">📄 Resume</button>
+                <button class="nav-btn" onclick="showSection('projects')">🎨 Projects</button>
+                <button class="nav-btn" onclick="showSection('profile')">👤 Profile</button>
+                <button class="nav-btn" onclick="showSection('settings')">⚙️ Settings</button>
+            </nav>
+
+            <main class="admin-content">
+                <!-- Wallpaper Section -->
+                <section id="section-wallpaper" class="admin-section active">
+                    <h2>Desktop Wallpaper</h2>
+                    <div class="upload-area">
+                        <div class="current-preview">
+                            <h3>Current Wallpaper</h3>
+                            <img id="currentWallpaper" src="assets/wallpaper-bliss.jpg" alt="Current wallpaper" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'300\'%3E%3Crect fill=\'%233a78b5\' width=\'400\' height=\'300\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' fill=\'white\' font-size=\'20\'%3ENo wallpaper%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <div class="upload-controls">
+                            <h3>Upload Image Wallpaper</h3>
+                            <input type="file" id="wallpaperInput" accept="image/*" onchange="previewWallpaper(this)">
+                            <div class="preview-box" id="wallpaperPreview"></div>
+                            <button onclick="uploadWallpaper()" class="btn-primary">Apply Image</button>
+                            <button onclick="removeWallpaperImage()" class="btn-danger" style="margin-top: 5px;">🗑️ Remove Image</button>
+                            <hr>
+                            <h3>Or Use Solid Color</h3>
+                            <div class="editor-group">
+                                <label>Background Color</label>
+                                <div style="display: flex; gap: 10px; align-items: center;">
+                                    <input type="color" id="wallpaperColor" value="#3a78b5" style="width: 60px; height: 40px; border: 2px solid #ddd; border-radius: 4px; cursor: pointer;">
+                                    <input type="text" id="wallpaperColorHex" value="#3a78b5" placeholder="#3a78b5" style="flex: 1;" oninput="updateColorPicker(this.value)">
+                                </div>
+                            </div>
+                            <button onclick="applyWallpaperColor()" class="btn-primary">Apply Color</button>
+                            <button onclick="removeWallpaperColor()" class="btn-danger" style="margin-top: 5px;">🗑️ Remove Color</button>
+                            <hr>
+                            <button onclick="resetWallpaper()" class="btn-secondary">Reset to Default</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Boot Screen Section -->
+                <section id="section-bootscreen" class="admin-section">
+                    <h2>Boot Screen Image</h2>
+                    <div class="upload-area">
+                        <div class="current-preview">
+                            <h3>Current Boot Screen</h3>
+                            <img id="currentBootScreen" src="assets/images/boot-screen.jpg" alt="Current boot screen" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'300\'%3E%3Crect fill=\'%23000\' width=\'400\' height=\'300\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' fill=\'white\' font-size=\'20\'%3ENo boot screen%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <div class="upload-controls">
+                            <h3>Upload New Boot Screen</h3>
+                            <p style="color: #666; font-size: 13px; margin-bottom: 10px;">
+                                Upload a custom boot screen image. Recommended size: 1024x768 or higher.
+                            </p>
+                            <input type="file" id="bootScreenInput" accept="image/*" onchange="previewBootScreen(this)">
+                            <div class="preview-box" id="bootScreenPreview"></div>
+                            <button onclick="uploadBootScreen()" class="btn-primary">Apply Image</button>
+                            <hr>
+                            <h3>Or Use Background Color</h3>
+                            <div class="editor-group">
+                                <label>Background Color</label>
+                                <div style="display: flex; gap: 10px; align-items: center;">
+                                    <input type="color" id="bootScreenColor" value="#000000" style="width: 60px; height: 40px; border: 2px solid #ddd; border-radius: 4px; cursor: pointer;">
+                                    <input type="text" id="bootScreenColorHex" value="#000000" placeholder="#000000" style="flex: 1;" oninput="updateBootColorPicker(this.value)">
+                                </div>
+                            </div>
+                            <button onclick="applyBootScreenColor()" class="btn-primary">Apply Background Color</button>
+                            <hr>
+                            <h3>Boot Screen Text</h3>
+                            <div class="editor-group">
+                                <label>Title Text (Left)</label>
+                                <input type="text" id="bootTextLeft" placeholder="Mitchlvin" value="Mitchlvin">
+                            </div>
+                            <div class="editor-group">
+                                <label>Title Text (Right - XP)</label>
+                                <input type="text" id="bootTextRight" placeholder="XP" value="XP">
+                            </div>
+                            <div class="editor-group">
+                                <label>Subtitle</label>
+                                <input type="text" id="bootTextSubtitle" placeholder="Visual Designer" value="Visual Designer">
+                            </div>
+                            <div class="editor-group">
+                                <label>Bottom Left Text</label>
+                                <textarea id="bootTextBottomLeft" rows="2" placeholder="For the best experience\nEnter Full Screen (F11)">For the best experience
+Enter Full Screen (F11)</textarea>
+                            </div>
+                            <div class="editor-group">
+                                <label>Bottom Right Text</label>
+                                <input type="text" id="bootTextBottomRight" placeholder="Portfolio®" value="Portfolio®">
+                            </div>
+                            <hr>
+                            <h4>Font Sizes (px)</h4>
+                            <div class="editor-group" style="display: flex; gap: 15px; flex-wrap: wrap;">
+                                <div style="flex: 1; min-width: 120px;">
+                                    <label>Title Name</label>
+                                    <input type="number" id="bootFontName" min="20" max="120" value="72" placeholder="72">
+                                </div>
+                                <div style="flex: 1; min-width: 120px;">
+                                    <label>Title XP</label>
+                                    <input type="number" id="bootFontXP" min="16" max="80" value="48" placeholder="48">
+                                </div>
+                                <div style="flex: 1; min-width: 120px;">
+                                    <label>Subtitle</label>
+                                    <input type="number" id="bootFontSubtitle" min="12" max="48" value="24" placeholder="24">
+                                </div>
+                            </div>
+                            <div class="editor-group" style="display: flex; gap: 15px; flex-wrap: wrap;">
+                                <div style="flex: 1; min-width: 120px;">
+                                    <label>Bottom Hint</label>
+                                    <input type="number" id="bootFontHint" min="8" max="24" value="14" placeholder="14">
+                                </div>
+                                <div style="flex: 1; min-width: 120px;">
+                                    <label>Brand</label>
+                                    <input type="number" id="bootFontBrand" min="16" max="60" value="36" placeholder="36">
+                                </div>
+                            </div>
+                            <button onclick="saveBootScreenText()" class="btn-primary">Save Boot Screen Text</button>
+                            <hr>
+                            <h3>Boot Screen Duration</h3>
+                            <div class="editor-group">
+                                <label>Boot Screen Display Time (seconds)</label>
+                                <input type="number" id="bootScreenDuration" min="0" max="30" step="0.5" value="3" placeholder="3">
+                                <small style="color: #666;">Set to 0 to skip boot screen. Default: 3 seconds</small>
+                            </div>
+                            <button onclick="saveBootScreenDuration()" class="btn-primary">Save Duration</button>
+                            <hr>
+                            <h3>Loading Bar Settings</h3>
+                            <div class="editor-group">
+                                <label>Animation Loop Count (0 = infinite)</label>
+                                <input type="number" id="bootLoaderLoops" min="0" max="100" value="1" placeholder="1">
+                                <small style="color: #666;">Set to 0 for infinite loop, or specify number of times to animate</small>
+                            </div>
+                            <div class="editor-group">
+                                <label>Loading Bar Width (px)</label>
+                                <input type="number" id="bootLoaderWidth" min="100" max="600" value="220" placeholder="220">
+                            </div>
+                            <div class="editor-group">
+                                <label>Loading Bar Height (px)</label>
+                                <input type="number" id="bootLoaderHeight" min="10" max="50" value="22" placeholder="22">
+                            </div>
+                            <div class="editor-group">
+                                <label>Loading Bar Border Radius (px)</label>
+                                <input type="number" id="bootLoaderRadius" min="0" max="25" value="0" placeholder="0">
+                                <small style="color: #666;">0 = square corners, higher values = more rounded</small>
+                            </div>
+                            <div class="editor-group">
+                                <label>Animation Duration (seconds)</label>
+                                <input type="number" id="bootLoaderDuration" min="0.5" max="10" step="0.5" value="2" placeholder="2">
+                            </div>
+                            <button onclick="saveBootLoaderSettings()" class="btn-primary">Save Loading Bar Settings</button>
+                            <hr>
+                            <button onclick="resetBootScreen()" class="btn-secondary">Reset to Default</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Desktop Icons Section -->
+                <section id="section-icons" class="admin-section">
+                    <h2>Desktop Icons</h2>
+                    <div class="editor-group">
+                        <label>Desktop Icon Size (px)</label>
+                        <input type="number" id="iconSize" min="32" max="128" value="48" placeholder="48">
+                        <small style="color: #666;">Default: 48px. Adjust size of desktop icons.</small>
+                    </div>
+                    <div class="editor-group">
+                        <label>Desktop Icon Font Size (px)</label>
+                        <input type="number" id="iconFontSize" min="8" max="24" value="11" placeholder="11">
+                        <small style="color: #666;">Default: 11px. Adjust label font size.</small>
+                    </div>
+                    <div class="editor-group">
+                        <label>Icon Gap / Spacing (px)</label>
+                        <input type="number" id="iconGap" min="5" max="100" value="25" placeholder="25">
+                        <small style="color: #666;">Default: 25px. Space between each icon.</small>
+                    </div>
+                    <div class="editor-group">
+                        <label>Icon Margin from Edge (px)</label>
+                        <input type="number" id="iconMargin" min="5" max="100" value="20" placeholder="20">
+                        <small style="color: #666;">Default: 20px. Distance from screen edges (top & left).</small>
+                    </div>
+                    <button onclick="saveIconSettings()" class="btn-primary">Apply Icon Settings</button>
+                    <hr>
+                    <div class="icons-grid">
+                        <div class="icon-card">
+                            <h3>About Me Icon</h3>
+                            <img id="iconAbout" src="data:image/svg+xml,%3Csvg viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='24' cy='24' r='22' fill='%234a90d9'/%3E%3C/svg%3E" alt="About icon">
+                            <input type="file" accept="image/*" onchange="previewIcon(this, 'about')">
+                            <button onclick="uploadIcon('about')" class="btn-small">Update</button>
+                        </div>
+                        <div class="icon-card">
+                            <h3>Resume Icon</h3>
+                            <img id="iconResume" src="data:image/svg+xml,%3Csvg viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='8' y='4' width='32' height='40' fill='white' stroke='%23c00'/%3E%3C/svg%3E" alt="Resume icon">
+                            <input type="file" accept="image/*" onchange="previewIcon(this, 'resume')">
+                            <button onclick="uploadIcon('resume')" class="btn-small">Update</button>
+                        </div>
+                        <div class="icon-card">
+                            <h3>Projects Icon</h3>
+                            <img id="iconProjects" src="data:image/svg+xml,%3Csvg viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='24' cy='24' r='20' fill='%234285f4'/%3E%3C/svg%3E" alt="Projects icon">
+                            <input type="file" accept="image/*" onchange="previewIcon(this, 'projects')">
+                            <button onclick="uploadIcon('projects')" class="btn-small">Update</button>
+                        </div>
+                        <div class="icon-card">
+                            <h3>Contact Icon</h3>
+                            <img id="iconContact" src="data:image/svg+xml,%3Csvg viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='4' y='10' width='40' height='28' fill='%23f5d442'/%3E%3C/svg%3E" alt="Contact icon">
+                            <input type="file" accept="image/*" onchange="previewIcon(this, 'contact')">
+                            <button onclick="uploadIcon('contact')" class="btn-small">Update</button>
+                        </div>
+                    </div>
+                    <hr>
+                    <h3>Boot & Login Screen Icons</h3>
+                    <div class="icons-grid">
+                        <div class="icon-card">
+                            <h3>Boot Screen Logo</h3>
+                            <img id="iconBootLogo" src="data:image/svg+xml,%3Csvg viewBox='0 0 88 88' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='2' y='2' width='38' height='38' fill='%23f25022'/%3E%3Crect x='48' y='2' width='38' height='38' fill='%237fba00'/%3E%3Crect x='2' y='48' width='38' height='38' fill='%2300a4ef'/%3E%3Crect x='48' y='48' width='38' height='38' fill='%23ffb900'/%3E%3C/svg%3E" alt="Boot logo">
+                            <input type="file" accept="image/*" onchange="previewIcon(this, 'bootLogo')">
+                            <button onclick="uploadIcon('bootLogo')" class="btn-small">Update</button>
+                        </div>
+                        <div class="icon-card">
+                            <h3>Login Screen Avatar</h3>
+                            <img id="iconLoginAvatar" src="data:image/svg+xml,%3Csvg viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='24' cy='24' r='22' fill='%234a90d9'/%3E%3C/svg%3E" alt="Login avatar">
+                            <input type="file" accept="image/*" onchange="previewIcon(this, 'loginAvatar')">
+                            <button onclick="uploadIcon('loginAvatar')" class="btn-small">Update</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Content Section -->
+                <section id="section-content" class="admin-section">
+                    <h2>Website Content</h2>
+                    <div class="content-editor">
+                        <div class="editor-group">
+                            <label>Boot Screen Title</label>
+                            <input type="text" id="bootTitle" value="Mitchlvin">
+                            <input type="text" id="bootTitleSuffix" value="XP" placeholder="Suffix (e.g., XP)">
+                        </div>
+                        <div class="editor-group">
+                            <label>Boot Screen Subtitle</label>
+                            <input type="text" id="bootSubtitle" value="Visual Designer">
+                        </div>
+                        <div class="editor-group">
+                            <label>Boot Screen Hint (Bottom Left)</label>
+                            <textarea id="bootHint" rows="2">For the best experience
+Enter Full Screen (F11)</textarea>
+                        </div>
+                        <div class="editor-group">
+                            <label>Boot Screen Portfolio Text (Bottom Right)</label>
+                            <input type="text" id="bootPortfolio" value="Portfolio®">
+                        </div>
+                        <hr>
+                        <div class="editor-group">
+                            <label>Login Screen Title</label>
+                            <input type="text" id="loginTitle" value="YourName">
+                            <input type="text" id="loginTitleSuffix" value="XP">
+                        </div>
+                        <div class="editor-group">
+                            <label>Login Screen Subtitle</label>
+                            <input type="text" id="loginSubtitle" value="Frontend Developer">
+                        </div>
+                        <div class="editor-group">
+                            <label>User Display Name</label>
+                            <input type="text" id="userName" value="Your Name">
+                        </div>
+                        <div class="editor-group">
+                            <label>User Role</label>
+                            <input type="text" id="userRole" value="Frontend Developer">
+                        </div>
+                        <button onclick="saveContent()" class="btn-primary">Save All Content</button>
+                    </div>
+                </section>
+
+                <!-- About Me Section -->
+                <section id="section-aboutme" class="admin-section">
+                    <h2>About Me Page</h2>
+                    <div class="content-editor">
+                        <h3>Theme Colors</h3>
+                        <div class="editor-group" style="display: flex; gap: 20px;">
+                            <div>
+                                <label>Sidebar Color (Left)</label>
+                                <input type="color" id="aboutSidebarColor" value="#6366f1" style="width: 60px; height: 30px;">
+                            </div>
+                            <div>
+                                <label>Main Content Color (Right)</label>
+                                <input type="color" id="aboutMainColor" value="#7c3aed" style="width: 60px; height: 30px;">
+                            </div>
+                        </div>
+                        <hr>
+                        <h3>Size Settings</h3>
+                        <div class="editor-group" style="display: flex; gap: 20px;">
+                            <div>
+                                <label>Title Font Size (px)</label>
+                                <input type="number" id="aboutTitleSize" value="24" min="16" max="48" style="width: 60px;">
+                            </div>
+                            <div>
+                                <label>Paragraph Font Size (px)</label>
+                                <input type="number" id="aboutFontSize" value="11" min="10" max="18" style="width: 60px;">
+                            </div>
+                            <div>
+                                <label>Avatar Size (px)</label>
+                                <input type="number" id="aboutAvatarSize" value="50" min="30" max="100" style="width: 60px;">
+                            </div>
+                        </div>
+                        <hr>
+                        <h3>Main Content</h3>
+                        <div class="editor-group">
+                            <label>About Me Title</label>
+                            <input type="text" id="aboutMeTitle" value="About Me">
+                        </div>
+                        <div class="editor-group">
+                            <label>Paragraph 1</label>
+                            <textarea id="aboutPara1" rows="3">I'm Mitch, a visual designer from Brisbane, Australia. I tackle diverse design challenges and focus on bringing ideas to life.</textarea>
+                        </div>
+                        <div class="editor-group">
+                            <label>Paragraph 2</label>
+                            <textarea id="aboutPara2" rows="3">Growing up in New Zealand, I saw how powerful design could be through sport, particularly with rugby and the All Blacks.</textarea>
+                        </div>
+                        <div class="editor-group">
+                            <label>Paragraph 3</label>
+                            <textarea id="aboutPara3" rows="3">After committing to design in my twenties, I completed a Diploma of Graphic Design at Queensland TAFE.</textarea>
+                        </div>
+                        <div class="editor-group">
+                            <label>Paragraph 4</label>
+                            <textarea id="aboutPara4" rows="3">I first discovered focus, discipline, and the drive to constantly push standards through playing rugby.</textarea>
+                        </div>
+                        <hr>
+                        <h3>Skills Section</h3>
+                        <div class="editor-group">
+                            <label>Section Title</label>
+                            <input type="text" id="skillsHeaderTitle" value="Skills" placeholder="เช่น Technical Skills">
+                        </div>
+                        <div class="editor-group">
+                            <label>Skills List (one per line)</label>
+                            <textarea id="aboutSkillsList" rows="6" placeholder="พิมพ์ Skills แต่ละรายการ 1 บรรทัด เช่น:
+🎨 Graphic Design
+🌐 Web Design">🎨 Graphic Design
+🌐 Web Design
+📱 Social Graphics
+🎬 Video Production
+🖥️ UX/UI Design
+💡 Creative Thinking</textarea>
+                        </div>
+                        <hr>
+                        <h3>Software Section</h3>
+                        <div class="editor-group">
+                            <label>Section Title</label>
+                            <input type="text" id="softwareHeaderTitle" value="Software" placeholder="เช่น Tools & Software">
+                        </div>
+                        <div class="editor-group">
+                            <label>Software List (one per line)</label>
+                            <textarea id="aboutSoftwareList" rows="5" placeholder="พิมพ์ Software แต่ละรายการ 1 บรรทัด เช่น:
+🎨 Adobe CC
+💻 VS Code">🎨 Adobe CC
+💻 VS Code
+🤖 Claude
+🧠 Cursor
+🌐 WordPress</textarea>
+                        </div>
+                        <button onclick="saveSkillsSoftware()" class="btn-primary" style="margin-top: 10px; margin-bottom: 15px;">💾 Save Skills & Software</button>
+                        <button onclick="resetSkillsSoftware()" class="btn-secondary" style="margin-top: 10px; margin-bottom: 15px; margin-left: 10px; background: #dc3545;">🔄 Reset to Default</button>
+                        <hr>
+                        <h3>Paragraph Avatars</h3>
+                        <div class="editor-group" style="display: flex; gap: 15px; flex-wrap: wrap;">
+                            <div>
+                                <label>Avatar 1</label>
+                                <img id="previewAvatar1" src="" alt="Avatar 1" style="width: 50px; height: 50px; border-radius: 50%; display: block; margin: 5px 0; background: #4a90d9; object-fit: cover;">
+                                <input type="file" accept="image/*" onchange="uploadAboutAvatar(this, 1)" style="width: 100px;">
+                                <button type="button" onclick="clearAboutAvatar(1)" style="font-size: 10px; padding: 2px 5px;">Clear</button>
+                            </div>
+                            <div>
+                                <label>Avatar 2</label>
+                                <img id="previewAvatar2" src="" alt="Avatar 2" style="width: 50px; height: 50px; border-radius: 50%; display: block; margin: 5px 0; background: #e8a030; object-fit: cover;">
+                                <input type="file" accept="image/*" onchange="uploadAboutAvatar(this, 2)" style="width: 100px;">
+                                <button type="button" onclick="clearAboutAvatar(2)" style="font-size: 10px; padding: 2px 5px;">Clear</button>
+                            </div>
+                            <div>
+                                <label>Avatar 3</label>
+                                <img id="previewAvatar3" src="" alt="Avatar 3" style="width: 50px; height: 50px; border-radius: 50%; display: block; margin: 5px 0; background: #d4a574; object-fit: cover;">
+                                <input type="file" accept="image/*" onchange="uploadAboutAvatar(this, 3)" style="width: 100px;">
+                                <button type="button" onclick="clearAboutAvatar(3)" style="font-size: 10px; padding: 2px 5px;">Clear</button>
+                            </div>
+                            <div>
+                                <label>Avatar 4</label>
+                                <img id="previewAvatar4" src="" alt="Avatar 4" style="width: 50px; height: 50px; border-radius: 50%; display: block; margin: 5px 0; background: #993399; object-fit: cover;">
+                                <input type="file" accept="image/*" onchange="uploadAboutAvatar(this, 4)" style="width: 100px;">
+                                <button type="button" onclick="clearAboutAvatar(4)" style="font-size: 10px; padding: 2px 5px;">Clear</button>
+                            </div>
+                        </div>
+                        <button onclick="saveAboutMe()" class="btn-primary">Save About Me</button>
+                    </div>
+                </section>
+
+                <!-- Resume Section -->
+                <section id="section-resume" class="admin-section">
+                    <h2>My Resume / CV</h2>
+                    <div class="content-editor">
+                        <div class="editor-group">
+                            <label>Background Color</label>
+                            <input type="color" id="resumeBgColor" value="#808080" style="width: 60px; height: 30px;">
+                        </div>
+                        <hr>
+                        <div class="editor-group">
+                            <label>Upload CV Image (PNG, JPG recommended)</label>
+                            <p style="font-size: 11px; color: #666; margin-bottom: 10px;">Upload a high-quality image of your CV/Resume. Recommended size: A4 ratio (595x842px or larger)</p>
+                            <input type="file" accept="image/*" onchange="uploadCVImage(this)">
+                            <img id="currentCVPreview" src="" alt="CV Preview" style="max-width: 300px; margin-top: 10px; display: none; border: 1px solid #ccc;">
+                        </div>
+                        <button onclick="clearCVImage()" class="btn-secondary" style="margin-top: 10px;">Clear CV Image</button>
+                        <button onclick="saveResumeSettings()" class="btn-primary" style="margin-top: 10px; margin-left: 10px;">Save Settings</button>
+                    </div>
+                </section>
+
+                <!-- Projects Section (List Only) -->
+                <section id="section-projects" class="admin-section">
+                    <h2>My Projects</h2>
+                    <div class="content-editor">
+                        <p style="color: #666; margin-bottom: 15px;">Manage your portfolio projects. Click Edit to modify or Delete to remove.</p>
+                        <div id="projectsList">
+                            <!-- Projects will be rendered here -->
+                        </div>
+                        
+                        <hr style="margin: 30px 0;">
+                        
+                        <!-- Category Management -->
+                        <h3 style="margin-bottom: 15px;">📂 Project Categories</h3>
+                        <p style="color: #666; margin-bottom: 15px;">Manage sidebar categories. Drag to reorder, edit name/icon, or remove.</p>
+                        
+                        <div id="categoriesList" style="margin-bottom: 20px;">
+                            <!-- Categories will be rendered here -->
+                        </div>
+                        
+                        <div style="display: flex; gap: 10px; align-items: flex-end; flex-wrap: wrap; padding: 15px; background: #f8f9fa; border-radius: 8px;">
+                            <div style="flex: 1; min-width: 150px;">
+                                <label style="display: block; font-size: 12px; margin-bottom: 5px;">Category ID (lowercase)</label>
+                                <input type="text" id="newCategoryId" placeholder="e.g. design" style="width: 100%;">
+                            </div>
+                            <div style="flex: 1; min-width: 150px;">
+                                <label style="display: block; font-size: 12px; margin-bottom: 5px;">Display Name</label>
+                                <input type="text" id="newCategoryName" placeholder="e.g. Design" style="width: 100%;">
+                            </div>
+                            <div style="flex: 1; min-width: 200px;">
+                                <label style="display: block; font-size: 12px; margin-bottom: 5px;">Icon URL (16px)</label>
+                                <input type="text" id="newCategoryIcon" placeholder="https://cdn-icons-png.flaticon.com/16/..." style="width: 100%;">
+                            </div>
+                            <button onclick="addCategory()" class="btn-primary" style="white-space: nowrap;">➕ Add Category</button>
+                        </div>
+                        
+                        <div style="margin-top: 15px; display: flex; gap: 10px;">
+                            <button onclick="saveCategories()" class="btn-primary">💾 Save Categories</button>
+                            <button onclick="resetCategoriesToDefault()" class="btn-secondary">🔄 Reset to Default</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Profile Section -->
+                <section id="section-profile" class="admin-section">
+                    <h2>Profile Information</h2>
+                    <div class="profile-editor">
+                        <div class="editor-group">
+                            <label>Profile Avatar</label>
+                            <img id="currentAvatar" src="assets/images/avatar.png" alt="Avatar" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover;" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\'%3E%3Ccircle cx=\'50\' cy=\'50\' r=\'50\' fill=\'%234a90d9\'/%3E%3Ctext x=\'50%25\' y=\'60%25\' text-anchor=\'middle\' fill=\'white\' font-size=\'40\'%3E👤%3C/text%3E%3C/svg%3E'">
+                            <input type="file" accept="image/*" onchange="previewAvatar(this)">
+                            <button onclick="uploadAvatar()" class="btn-primary">Update Avatar</button>
+                        </div>
+                        <div class="editor-group">
+                            <label>Email</label>
+                            <input type="email" id="profileEmail" value="your.email@gmail.com">
+                        </div>
+                        <div class="editor-group">
+                            <label>Location</label>
+                            <input type="text" id="profileLocation" value="Your City, Country">
+                        </div>
+                        <div class="editor-group">
+                            <label>Instagram URL</label>
+                            <input type="url" id="socialInstagram" value="https://instagram.com">
+                        </div>
+                        <div class="editor-group">
+                            <label>GitHub URL</label>
+                            <input type="url" id="socialGithub" value="https://github.com">
+                        </div>
+                        <div class="editor-group">
+                            <label>LinkedIn URL</label>
+                            <input type="url" id="socialLinkedin" value="https://linkedin.com">
+                        </div>
+                        <button onclick="saveProfile()" class="btn-primary">Save Profile</button>
+                    </div>
+                </section>
+
+                <!-- Settings Section -->
+                <section id="section-settings" class="admin-section">
+                    <h2>Admin Settings</h2>
+                    <div class="settings-editor">
+                        <h3>CRT Effect Settings</h3>
+                        <div class="editor-group">
+                            <label>CRT Scanline Opacity (%)</label>
+                            <input type="range" id="crtScanlineOpacity" min="0" max="3" value="0.5" step="0.1" oninput="updateCrtPreview()">
+                            <span id="crtScanlineValue">0.5%</span>
+                            <small style="color: #666;">Default: 0.5%. Nearly invisible for crystal clear text</small>
+                        </div>
+                        <div class="editor-group">
+                            <label>CRT Vignette Opacity (%)</label>
+                            <input type="range" id="crtVignetteOpacity" min="0" max="30" value="0" oninput="updateCrtPreview()">
+                            <span id="crtVignetteValue">0%</span>
+                            <small style="color: #666;">Default: 0%. Screen edge darkness (0 = none)</small>
+                        </div>
+                        <div class="editor-group">
+                            <label>CRT Brightness (%)</label>
+                            <input type="range" id="crtBrightness" min="50" max="150" value="100" oninput="updateCrtPreview()">
+                            <span id="crtBrightnessValue">100%</span>
+                            <small style="color: #666;">Default: 100%. Screen brightness (50 = dark, 150 = bright)</small>
+                        </div>
+                        <button onclick="saveCrtSettings()" class="btn-primary">Save CRT Settings</button>
+                        <hr>
+                        <h3>Admin Password</h3>
+                        <div class="editor-group">
+                            <label>Change Admin Password</label>
+                            <input type="password" id="newPassword" placeholder="New password">
+                            <input type="password" id="confirmPassword" placeholder="Confirm password">
+                            <button onclick="changePassword()" class="btn-primary">Update Password</button>
+                        </div>
+                        <hr>
+                        <div class="editor-group">
+                            <label>Export Configuration</label>
+                            <p>Download all settings as JSON file</p>
+                            <button onclick="exportConfig()" class="btn-secondary">Export Config</button>
+                        </div>
+                        <div class="editor-group">
+                            <label>Import Configuration</label>
+                            <input type="file" accept=".json" onchange="importConfig(this)">
+                        </div>
+                        <hr>
+                        <div class="editor-group">
+                            <label>💾 Save Current as Default</label>
+                            <p style="color: #28a745;">บันทึกการตั้งค่าปัจจุบันเป็นค่าเริ่มต้นใหม่</p>
+                            <button onclick="saveAsDefault()" class="btn-primary" style="background: #28a745;">💾 Save as Default</button>
+                        </div>
+                        <hr>
+                        <div class="editor-group">
+                            <label>Reset to Defaults</label>
+                            <p style="color: #c00;">⚠️ This will reset all content to saved default values</p>
+                            <button onclick="resetToDefaults()" class="btn-danger">Reset Everything</button>
+                        </div>
+                        <hr>
+                        <div class="editor-group">
+                            <label>📋 Error Logs</label>
+                            <p style="color: #666;">ประวัติ error ที่เกิดขึ้น</p>
+                            <div id="errorLogContainer" style="max-height:200px;overflow-y:auto;border:1px solid #ddd;border-radius:4px;background:#f9f9f9;">
+                                <div style="color:#666;padding:10px;">No errors logged</div>
+                            </div>
+                            <button onclick="clearErrorLogs()" class="btn-secondary" style="margin-top:10px;">🗑️ Clear Logs</button>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <footer class="admin-footer">
+                <p>XP Portfolio Admin Panel v1.0 | Changes are saved to localStorage</p>
+            </footer>
+        </div>
+    </div>
+
+    <script src="js/admin.js?v=3"></script>
+</body>
+</html>

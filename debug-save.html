@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug Boot Screen Font Sizes</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #f0f0f0; }
+        .section { margin: 20px 0; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        button { padding: 12px 24px; margin: 5px; cursor: pointer; background: #4a90d9; color: white; border: none; border-radius: 4px; font-size: 14px; }
+        button:hover { background: #3a80c9; }
+        .success { color: green; font-weight: bold; padding: 10px; background: #d4edda; border-radius: 4px; }
+        .error { color: red; font-weight: bold; padding: 10px; background: #f8d7da; border-radius: 4px; }
+        pre { background: #2d2d2d; color: #f8f8f2; padding: 15px; overflow: auto; max-height: 400px; border-radius: 4px; }
+        input, textarea { width: 100%; padding: 10px; margin: 5px 0; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; }
+        label { font-weight: bold; display: block; margin-top: 15px; color: #333; }
+        h1 { color: #333; }
+        h2 { color: #4a90d9; border-bottom: 2px solid #4a90d9; padding-bottom: 10px; }
+        #result { margin-top: 15px; }
+    </style>
+</head>
+<body>
+    <h1>🔧 Debug Save Function</h1>
+    
+    <div class="section">
+        <h2>1. Test localStorage</h2>
+        <button onclick="testLocalStorage()">Test localStorage</button>
+        <div id="localStorageResult"></div>
+    </div>
+    
+    <div class="section">
+        <h2>2. Current Config</h2>
+        <button onclick="showConfig()">Show Current Config</button>
+        <pre id="configDisplay">Click button to show config...</pre>
+    </div>
+    
+    <div class="section">
+        <h2>3. Test Save Skills/Software</h2>
+        <label>Skills Title:</label>
+        <input type="text" id="testSkillsTitle" value="Technical Skills">
+        
+        <label>Skills List:</label>
+        <textarea id="testSkillsList" rows="4">🌐 Peak Account Program
+💻 Microsoft Word / Excel
+🎨 Illustrator Photoshop Canva</textarea>
+        
+        <label>Software Title:</label>
+        <input type="text" id="testSoftwareTitle" value="Soft Skills">
+        
+        <label>Software List:</label>
+        <textarea id="testSoftwareList" rows="4">🎨 Adobe CC
+💻 VS Code
+🤖 Claude</textarea>
+        
+        <button onclick="testSaveSkillsSoftware()">💾 Test Save</button>
+        <div id="saveResult"></div>
+    </div>
+    
+    <div class="section">
+        <h2>4. Links</h2>
+        <a href="admin.html" target="_blank"><button>Open Admin Panel</button></a>
+        <a href="index.html" target="_blank"><button>Open Main Site</button></a>
+    </div>
+
+    <script>
+        const CONFIG_KEY = 'xp_portfolio_config';
+        
+        function testLocalStorage() {
+            const resultDiv = document.getElementById('localStorageResult');
+            try {
+                // Test write
+                localStorage.setItem('test_key', 'test_value');
+                const readValue = localStorage.getItem('test_key');
+                localStorage.removeItem('test_key');
+                
+                if (readValue === 'test_value') {
+                    resultDiv.innerHTML = '<div class="success">✅ localStorage works correctly!</div>';
+                } else {
+                    resultDiv.innerHTML = '<div class="error">❌ localStorage read/write mismatch</div>';
+                }
+            } catch (e) {
+                resultDiv.innerHTML = '<div class="error">❌ localStorage error: ' + e.message + '</div>';
+            }
+        }
+        
+        function showConfig() {
+            const pre = document.getElementById('configDisplay');
+            try {
+                const config = JSON.parse(localStorage.getItem(CONFIG_KEY) || '{}');
+                pre.textContent = JSON.stringify(config, null, 2);
+            } catch (e) {
+                pre.textContent = 'Error: ' + e.message;
+            }
+        }
+        
+        function testSaveSkillsSoftware() {
+            const resultDiv = document.getElementById('saveResult');
+            try {
+                // Load current config
+                let config = JSON.parse(localStorage.getItem(CONFIG_KEY) || '{}');
+                if (!config.aboutMe) config.aboutMe = {};
+                
+                // Get values
+                const skillsTitle = document.getElementById('testSkillsTitle').value;
+                const skills = document.getElementById('testSkillsList').value;
+                const softwareTitle = document.getElementById('testSoftwareTitle').value;
+                const software = document.getElementById('testSoftwareList').value;
+                
+                // Save to config
+                config.aboutMe.skillsTitle = skillsTitle;
+                config.aboutMe.skills = skills;
+                config.aboutMe.softwareTitle = softwareTitle;
+                config.aboutMe.software = software;
+                
+                // Save to localStorage
+                localStorage.setItem(CONFIG_KEY, JSON.stringify(config));
+                
+                // Verify
+                const verify = JSON.parse(localStorage.getItem(CONFIG_KEY));
+                
+                if (verify.aboutMe && verify.aboutMe.skillsTitle === skillsTitle) {
+                    resultDiv.innerHTML = '<div class="success">✅ Save successful!<br>skillsTitle: ' + verify.aboutMe.skillsTitle + '<br>softwareTitle: ' + verify.aboutMe.softwareTitle + '</div>';
+                    showConfig();
+                } else {
+                    resultDiv.innerHTML = '<div class="error">❌ Verification failed</div>';
+                }
+            } catch (e) {
+                resultDiv.innerHTML = '<div class="error">❌ Error: ' + e.message + '</div>';
+                console.error(e);
+            }
+        }
+        
+        // Auto test localStorage on load
+        testLocalStorage();
+        showConfig();
+    </script>
+</body>
+</html>

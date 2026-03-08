@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Mockup Projects</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #1a1a2e;
+            color: #eee;
+            text-align: center;
+        }
+        h1 { color: #667eea; }
+        .project-card {
+            background: #2a2a4e;
+            border-radius: 12px;
+            padding: 15px;
+            margin: 15px 0;
+            text-align: left;
+        }
+        .project-card h3 { margin: 0 0 10px 0; color: #fff; }
+        .project-card p { margin: 5px 0; color: #aaa; font-size: 13px; }
+        .project-thumb {
+            width: 100%;
+            height: 120px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        button {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover { opacity: 0.9; }
+        .status {
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+            background: #27ae60;
+            display: none;
+        }
+        .status.show { display: block; }
+    </style>
+</head>
+<body>
+    <h1>🎨 Add 4 Mockup Projects</h1>
+    <p>คลิกปุ่มด้านล่างเพื่อเพิ่ม 4 โปรเจค mockup พร้อมรูปตัวอย่าง</p>
+    
+    <div class="project-card">
+        <div class="project-thumb" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+        <h3>🌐 E-Commerce Website</h3>
+        <p>Category: Web | 3 Images</p>
+    </div>
+    
+    <div class="project-card">
+        <div class="project-thumb" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
+        <h3>📱 Mobile App UI</h3>
+        <p>Category: App | 4 Images</p>
+    </div>
+    
+    <div class="project-card">
+        <div class="project-thumb" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
+        <h3>🎨 Brand Identity</h3>
+        <p>Category: Branding | 3 Images</p>
+    </div>
+    
+    <div class="project-card">
+        <div class="project-thumb" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);"></div>
+        <h3>🖼️ Digital Art Collection</h3>
+        <p>Category: Art | 5 Images</p>
+    </div>
+    
+    <button onclick="addMockupProjects()">➕ Add All 4 Projects</button>
+    
+    <div class="status" id="status">✅ เพิ่ม 4 โปรเจคสำเร็จ! ปิดหน้านี้และ refresh หน้าหลัก</div>
+    
+    <script>
+        // Generate placeholder image as base64 SVG
+        function generatePlaceholder(width, height, color1, color2, text) {
+            const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">
+                <defs>
+                    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:${color1};stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:${color2};stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#grad)"/>
+                <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" 
+                      font-family="Segoe UI, sans-serif" font-size="24" fill="white" opacity="0.8">
+                    ${text}
+                </text>
+            </svg>`;
+            return 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svg)));
+        }
+        
+        function addMockupProjects() {
+            const CONFIG_KEY = 'xp_portfolio_config';
+            let config = JSON.parse(localStorage.getItem(CONFIG_KEY) || '{}');
+            if (!config.projects) config.projects = [];
+            
+            const mockupProjects = [
+                {
+                    title: 'E-Commerce Website',
+                    category: 'web',
+                    desc: 'Client Work • Web Development',
+                    color1: '#667eea',
+                    color2: '#764ba2',
+                    count: '3 Items',
+                    brief: 'Modern e-commerce platform with responsive design and seamless checkout experience.',
+                    description: 'A full-featured e-commerce website built with React and Node.js. Features include product catalog, shopping cart, user authentication, payment integration, and admin dashboard.',
+                    banners: [
+                        generatePlaceholder(800, 450, '#667eea', '#764ba2', 'Homepage'),
+                        generatePlaceholder(800, 450, '#5a67d8', '#6b46c1', 'Product Page'),
+                        generatePlaceholder(800, 450, '#4c51bf', '#553c9a', 'Checkout')
+                    ],
+                    url: 'https://example.com'
+                },
+                {
+                    title: 'Mobile App UI',
+                    category: 'app',
+                    desc: 'Personal Work • UI/UX Design',
+                    color1: '#f093fb',
+                    color2: '#f5576c',
+                    count: '4 Items',
+                    brief: 'Clean and intuitive mobile app interface design for fitness tracking application.',
+                    description: 'UI/UX design for a fitness tracking mobile app. Includes onboarding screens, dashboard, workout tracking, progress charts, and social features.',
+                    banners: [
+                        generatePlaceholder(800, 450, '#f093fb', '#f5576c', 'Onboarding'),
+                        generatePlaceholder(800, 450, '#ec4899', '#ef4444', 'Dashboard'),
+                        generatePlaceholder(800, 450, '#db2777', '#dc2626', 'Workout'),
+                        generatePlaceholder(800, 450, '#be185d', '#b91c1c', 'Progress')
+                    ],
+                    url: ''
+                },
+                {
+                    title: 'Brand Identity',
+                    category: 'branding',
+                    desc: 'Client Work • Branding',
+                    color1: '#4facfe',
+                    color2: '#00f2fe',
+                    count: '3 Items',
+                    brief: 'Complete brand identity design for a tech startup including logo, colors, and guidelines.',
+                    description: 'Comprehensive branding project including logo design, color palette, typography selection, business cards, letterhead, and brand guidelines document.',
+                    banners: [
+                        generatePlaceholder(800, 450, '#4facfe', '#00f2fe', 'Logo Design'),
+                        generatePlaceholder(800, 450, '#38bdf8', '#2dd4bf', 'Color Palette'),
+                        generatePlaceholder(800, 450, '#0ea5e9', '#14b8a6', 'Guidelines')
+                    ],
+                    url: ''
+                },
+                {
+                    title: 'Digital Art Collection',
+                    category: 'art',
+                    desc: 'Personal Work • Digital Art',
+                    color1: '#43e97b',
+                    color2: '#38f9d7',
+                    count: '5 Items',
+                    brief: 'A collection of digital illustrations exploring nature and technology themes.',
+                    description: 'Personal art project featuring digital illustrations created with Procreate and Photoshop. The collection explores the intersection of nature and technology.',
+                    banners: [
+                        generatePlaceholder(800, 450, '#43e97b', '#38f9d7', 'Artwork 1'),
+                        generatePlaceholder(800, 450, '#22c55e', '#2dd4bf', 'Artwork 2'),
+                        generatePlaceholder(800, 450, '#16a34a', '#14b8a6', 'Artwork 3'),
+                        generatePlaceholder(800, 450, '#15803d', '#0d9488', 'Artwork 4'),
+                        generatePlaceholder(800, 450, '#166534', '#0f766e', 'Artwork 5')
+                    ],
+                    url: ''
+                }
+            ];
+            
+            // Add projects (avoid duplicates)
+            mockupProjects.forEach(project => {
+                const existingIndex = config.projects.findIndex(p => p.title === project.title);
+                if (existingIndex >= 0) {
+                    config.projects[existingIndex] = project;
+                } else {
+                    config.projects.push(project);
+                }
+            });
+            
+            localStorage.setItem(CONFIG_KEY, JSON.stringify(config));
+            document.getElementById('status').classList.add('show');
+        }
+    </script>
+</body>
+</html>

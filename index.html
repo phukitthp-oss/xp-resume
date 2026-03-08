@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phukit T. XP - Portfolio</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
+</head>
+<body>
+    <!-- Boot Screen -->
+    <div class="boot-screen" id="bootScreen">
+        <div class="boot-content">
+            <div class="boot-logo">
+                <svg viewBox="0 0 88 88" class="windows-flag">
+                    <path d="M0 12.5 L35 7 L35 42 L0 42 Z" fill="#f25022"/>
+                    <path d="M40 6 L88 0 L88 42 L40 42 Z" fill="#7fba00"/>
+                    <path d="M0 47 L35 47 L35 82 L0 76 Z" fill="#00a4ef"/>
+                    <path d="M40 47 L88 47 L88 88 L40 82 Z" fill="#ffb900"/>
+                </svg>
+            </div>
+            <div class="boot-title">
+                <span class="boot-name">Phukit T.</span><span class="boot-xp">xp</span>
+            </div>
+            <div class="boot-subtitle">Visual Designer</div>
+            <div class="boot-progress">
+                <div class="boot-progress-bar">
+                    <div class="boot-progress-fill"></div>
+                </div>
+            </div>
+        </div>
+        <div class="boot-footer">
+            <div class="boot-hint">For the best experience<br>Enter Full Screen (F11)</div>
+            <div class="boot-brand">Portfolio<span>®</span></div>
+        </div>
+    </div>
+
+    <!-- Mobile Warning -->
+    <div class="mobile-warning">
+        <svg class="mobile-warning-icon" viewBox="0 0 88 88">
+            <rect x="2" y="2" width="38" height="38" fill="#f25022"/>
+            <rect x="48" y="2" width="38" height="38" fill="#7fba00"/>
+            <rect x="2" y="48" width="38" height="38" fill="#00a4ef"/>
+            <rect x="48" y="48" width="38" height="38" fill="#ffb900"/>
+        </svg>
+        <h2>Desktop Experience Required</h2>
+        <p>This Windows XP experience is best viewed on a desktop or laptop computer. Please visit on a larger screen for the full experience.</p>
+    </div>
+
+    <!-- Desktop -->
+    <div class="desktop" id="desktop">
+        <!-- Desktop Icons -->
+        <div class="desktop-icons" id="desktopIcons">
+            <div class="desktop-icon" data-window="about">
+                <img src="data:image/svg+xml,%3Csvg viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='aboutGrad' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2360c0ff'/%3E%3Cstop offset='100%25' style='stop-color:%234090d0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='24' cy='24' r='22' fill='url(%23aboutGrad)' stroke='%232070b0' stroke-width='1'/%3E%3Ccircle cx='24' cy='14' r='3' fill='white'/%3E%3Crect x='21' y='20' width='6' height='14' fill='white' rx='1'/%3E%3C/svg%3E" alt="About Me">
+                <span class="desktop-icon-label">About Me</span>
+            </div>
+            <div class="desktop-icon" data-window="resume">
+                <img src="data:image/svg+xml,%3Csvg viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='8' y='4' width='32' height='40' fill='%23fff' stroke='%23999' stroke-width='1' rx='2'/%3E%3Crect x='8' y='4' width='32' height='10' fill='%23cc0000' rx='2'/%3E%3Crect x='8' y='12' width='32' height='2' fill='%23cc0000'/%3E%3Ctext x='24' y='12' text-anchor='middle' fill='white' font-size='7' font-weight='bold'%3EPDF%3C/text%3E%3Crect x='12' y='18' width='24' height='2' fill='%23666'/%3E%3Crect x='12' y='23' width='24' height='2' fill='%23666'/%3E%3Crect x='12' y='28' width='20' height='2' fill='%23666'/%3E%3Crect x='12' y='33' width='16' height='2' fill='%23666'/%3E%3C/svg%3E" alt="My Resume">
+                <span class="desktop-icon-label">My Resume</span>
+            </div>
+            <div class="desktop-icon" data-window="jpg2pdf">
+                <img src="data:image/svg+xml,%3Csvg viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='jpg2pdfGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2366bb6a'/%3E%3Cstop offset='100%25' style='stop-color:%23388e3c'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='4' y='6' width='18' height='14' fill='%23ffcc00' stroke='%23e6a800' rx='2'/%3E%3Ccircle cx='9' cy='11' r='2' fill='%23ff6600'/%3E%3Cpath d='M6 18 L10 14 L14 17 L18 12 L22 18 Z' fill='%2366bb6a'/%3E%3Cpath d='M24 20 L30 26 L24 26 Z' fill='%23666'/%3E%3Ctext x='24' y='24' fill='%23666' font-size='8' font-weight='bold'%3E→%3C/text%3E%3Crect x='26' y='24' width='18' height='22' fill='%23fff' stroke='%23cc0000' rx='2'/%3E%3Crect x='26' y='24' width='18' height='6' fill='%23cc0000' rx='2'/%3E%3Crect x='26' y='28' width='18' height='2' fill='%23cc0000'/%3E%3Ctext x='35' y='29' text-anchor='middle' fill='white' font-size='5' font-weight='bold'%3EPDF%3C/text%3E%3Crect x='29' y='34' width='12' height='1.5' fill='%23999'/%3E%3Crect x='29' y='37' width='12' height='1.5' fill='%23999'/%3E%3Crect x='29' y='40' width='8' height='1.5' fill='%23999'/%3E%3C/svg%3E" alt="JPG to PDF">
+                <span class="desktop-icon-label">JPG to PDF</span>
+            </div>
+        </div>
+
+        <!-- Windows Container -->
+        <div class="windows-container" id="windowsContainer">
+            <!-- About Me Window -->
+            <div class="window" id="window-about" data-title="About Me">
+                <div class="window-titlebar">
+                    <img class="window-titlebar-icon" src="data:image/svg+xml,%3Csvg viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='8' cy='8' r='7' fill='%234090d0'/%3E%3Ctext x='8' y='12' text-anchor='middle' fill='white' font-size='10' font-weight='bold'%3Ei%3C/text%3E%3C/svg%3E" alt="">
+                    <span class="window-titlebar-title">About Me</span>
+                    <div class="window-titlebar-btns">
+                        <button class="window-btn window-btn-min" data-action="minimize">_</button>
+                        <button class="window-btn window-btn-max" data-action="maximize">□</button>
+                        <button class="window-btn window-btn-close" data-action="close">×</button>
+                    </div>
+                </div>
+                <div class="window-toolbar">
+                    <div class="menu-item">
+                        <span>File</span>
+                        <div class="menu-dropdown">
+                            <div class="menu-option disabled">New Window</div>
+                            <div class="menu-option disabled">Save As...</div>
+                            <div class="menu-divider"></div>
+                            <div class="menu-option disabled">Page Setup...</div>
+                            <div class="menu-option disabled">Print...</div>
+                            <div class="menu-divider"></div>
+                            <div class="menu-option menu-exit">Exit</div>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <span>View</span>
+                        <div class="menu-dropdown">
+                            <div class="menu-option menu-restore">Restore</div>
+                            <div class="menu-option menu-minimize">Minimize</div>
+                        </div>
+                    </div>
+                    <span>Help</span>
+                </div>
+                <div class="window-toolbar-secondary">
+                    <a class="toolbar-link" data-window="resume"><img class="toolbar-icon" data-window="resume" src="" alt="">My Resume</a>
+                </div>
+                <div class="window-addressbar">
+                    <span>Address</span>
+                    <div class="addressbar-input">📁 About Me</div>
+                </div>
+                <div class="window-content about-window-content">
+                    <!-- Sidebar -->
+                    <div class="about-sidebar">
+                        <div class="sidebar-section">
+                            <div class="sidebar-header">Social Links</div>
+                            <div class="sidebar-items" id="aboutSocialLinks">
+                                <a class="sidebar-item" href="#" target="_blank" id="socialInstagramLink">📸 Instagram</a>
+                                <a class="sidebar-item" href="#" target="_blank" id="socialGithubLink">💻 GitHub</a>
+                                <a class="sidebar-item" href="#" target="_blank" id="socialLinkedinLink">💼 LinkedIn</a>
+                            </div>
+                        </div>
+                        <div class="sidebar-section">
+                            <div class="sidebar-header" id="skillsHeader">Skills</div>
+                            <div class="sidebar-items" id="aboutSkills">
+                                <div class="sidebar-item">🎨 Graphic Design</div>
+                                <div class="sidebar-item">🌐 Web Design</div>
+                                <div class="sidebar-item">📱 Social Graphics</div>
+                                <div class="sidebar-item">🎬 Video Production</div>
+                                <div class="sidebar-item">🖥️ UX/UI Design</div>
+                                <div class="sidebar-item">🔍 Attention to Detail</div>
+                                <div class="sidebar-item">💡 Creative Thinking</div>
+                                <div class="sidebar-item">🧩 Problem Solving</div>
+                            </div>
+                        </div>
+                        <div class="sidebar-section">
+                            <div class="sidebar-header" id="softwareHeader">Software</div>
+                            <div class="sidebar-items" id="aboutSoftware">
+                                <div class="sidebar-item">🎨 Adobe CC</div>
+                                <div class="sidebar-item">💻 VS Code</div>
+                                <div class="sidebar-item">🤖 Claude</div>
+                                <div class="sidebar-item">🤖 ChatGPT</div>
+                                <div class="sidebar-item">🧠 Cursor</div>
+                                <div class="sidebar-item">🌐 WordPress</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Main Content -->
+                    <div class="about-main">
+                        <h1 class="about-title" id="aboutTitle">About Me</h1>
+                        <div class="about-section">
+                            <img class="about-avatar" id="aboutAvatar1" src="data:image/svg+xml,%3Csvg viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='32' cy='32' r='30' fill='%234a90d9'/%3E%3Ccircle cx='32' cy='26' r='12' fill='%23f5d0a9'/%3E%3Cellipse cx='32' cy='50' rx='18' ry='14' fill='%233366cc'/%3E%3C/svg%3E" alt="Avatar">
+                            <p class="about-paragraph" id="aboutParagraph1">I'm Phukit T., a visual designer. I tackle diverse design challenges and focus on bringing ideas to life, whether that's solving problems for clients or exploring ambitious concepts like recreating an entire operating system in a browser.</p>
+                        </div>
+                        <div class="about-section">
+                            <img class="about-avatar" id="aboutAvatar2" src="data:image/svg+xml,%3Csvg viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='32' cy='32' r='30' fill='%234a90d9'/%3E%3Ccircle cx='32' cy='26' r='12' fill='%23f5d0a9'/%3E%3Cellipse cx='32' cy='50' rx='18' ry='14' fill='%23e8a030'/%3E%3C/svg%3E" alt="Avatar">
+                            <p class="about-paragraph" id="aboutParagraph2">Growing up in New Zealand, I saw how powerful design could be through sport, particularly with rugby and the All Blacks. Every jersey, every logo, every piece of visual identity carried the weight of a nation's pride.</p>
+                        </div>
+                        <div class="about-section">
+                            <img class="about-avatar" id="aboutAvatar3" src="data:image/svg+xml,%3Csvg viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='32' cy='32' r='30' fill='%234a90d9'/%3E%3Ccircle cx='32' cy='26' r='12' fill='%23f5d0a9'/%3E%3Cellipse cx='32' cy='50' rx='18' ry='14' fill='%23d4a574'/%3E%3C/svg%3E" alt="Avatar">
+                            <p class="about-paragraph" id="aboutParagraph3">After committing to design in my twenties, I completed a Diploma of Graphic Design at Queensland TAFE and started working with clients on anything from event video packages to front-end UI projects.</p>
+                        </div>
+                        <div class="about-section">
+                            <img class="about-avatar" id="aboutAvatar4" src="data:image/svg+xml,%3Csvg viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='32' cy='32' r='30' fill='%234a90d9'/%3E%3Ccircle cx='32' cy='26' r='12' fill='%23f5d0a9'/%3E%3Cellipse cx='32' cy='50' rx='18' ry='14' fill='%23993399'/%3E%3C/svg%3E" alt="Avatar">
+                            <p class="about-paragraph" id="aboutParagraph4">I first discovered focus, discipline, and the drive to constantly push standards through playing rugby and design brought all of that back. I'm obsessed with details, process, and raising my own bar with every project.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="window-statusbar">Learn more about Phukit T.</div>
+            </div>
+
+            <!-- Resume Window -->
+            <div class="window" id="window-resume" data-title="My Resume">
+                <div class="window-titlebar">
+                    <img class="window-titlebar-icon" src="data:image/svg+xml,%3Csvg viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='2' y='1' width='12' height='14' fill='%23fff' stroke='%23c00' rx='1'/%3E%3C/svg%3E" alt="">
+                    <span class="window-titlebar-title">My Resume</span>
+                    <div class="window-titlebar-btns">
+                        <button class="window-btn window-btn-min" data-action="minimize">_</button>
+                        <button class="window-btn window-btn-max" data-action="maximize">□</button>
+                        <button class="window-btn window-btn-close" data-action="close">×</button>
+                    </div>
+                </div>
+                <div class="window-toolbar">
+                    <div class="menu-item">
+                        <span>File</span>
+                        <div class="menu-dropdown">
+                            <div class="menu-option disabled">New Window</div>
+                            <div class="menu-option disabled">Save As...</div>
+                            <div class="menu-divider"></div>
+                            <div class="menu-option disabled">Page Setup...</div>
+                            <div class="menu-option disabled">Print...</div>
+                            <div class="menu-divider"></div>
+                            <div class="menu-option menu-exit">Exit</div>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <span>View</span>
+                        <div class="menu-dropdown">
+                            <div class="menu-option menu-restore">Restore</div>
+                            <div class="menu-option menu-minimize">Minimize</div>
+                        </div>
+                    </div>
+                    <span>Help</span>
+                </div>
+                <div class="resume-toolbar">
+                    <button class="resume-toolbar-btn" id="resumeZoomBtn"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='6' cy='6' r='5' fill='none' stroke='%23666' stroke-width='1.5'/%3E%3Cline x1='10' y1='10' x2='14' y2='14' stroke='%23666' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E" class="resume-toolbar-icon"> Zoom</button>
+                    <button class="resume-toolbar-btn" id="resumeSaveBtn"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='1' width='14' height='14' rx='1' fill='%233366cc'/%3E%3Crect x='3' y='1' width='8' height='5' fill='%23fff'/%3E%3Crect x='4' y='8' width='8' height='6' fill='%23ccc'/%3E%3Crect x='9' y='2' width='1' height='3' fill='%23333'/%3E%3C/svg%3E" class="resume-toolbar-icon"> Save</button>
+                    <button class="resume-toolbar-btn" id="resumePrintBtn"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='2' y='5' width='12' height='7' rx='1' fill='%23888'/%3E%3Crect x='4' y='1' width='8' height='5' fill='%23fff' stroke='%23666'/%3E%3Crect x='4' y='10' width='8' height='5' fill='%23fff' stroke='%23666'/%3E%3Ccircle cx='12' cy='8' r='1' fill='%2300cc00'/%3E%3C/svg%3E" class="resume-toolbar-icon"> Print</button>
+                </div>
+                <div class="window-content resume-viewer" id="resumeViewer">
+                    <div class="resume-container" id="resumeContainer">
+                        <img id="resumeCV" class="resume-cv-image" src="data:image/svg+xml,%3Csvg viewBox='0 0 595 842' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='595' height='842' fill='%23ffffff'/%3E%3Crect x='0' y='0' width='180' height='842' fill='%231a1a1a'/%3E%3Ctext x='297' y='80' text-anchor='middle' fill='%23333' font-size='36' font-weight='bold'%3EMITCH IVIN%3C/text%3E%3Ctext x='297' y='110' text-anchor='middle' fill='%23666' font-size='16'%3EVisual Designer%3C/text%3E%3Ctext x='297' y='400' text-anchor='middle' fill='%23999' font-size='14'%3EUpload your CV image in Admin Panel%3C/text%3E%3C/svg%3E" alt="CV Resume">
+                    </div>
+                </div>
+                <div class="window-statusbar">Click to zoom. Press Escape to view other areas.</div>
+            </div>
+
+            <!-- JPG to PDF Converter Window -->
+            <div class="window" id="window-jpg2pdf" data-title="JPG to PDF Converter">
+                <div class="window-titlebar">
+                    <img class="window-titlebar-icon" src="data:image/svg+xml,%3Csvg viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='1' y='2' width='6' height='5' fill='%23ffcc00' rx='1'/%3E%3Crect x='9' y='8' width='6' height='7' fill='%23cc0000' rx='1'/%3E%3Ctext x='12' y='13' text-anchor='middle' fill='white' font-size='4' font-weight='bold'%3EPDF%3C/text%3E%3Cpath d='M7 5 L9 8' stroke='%23666' stroke-width='1'/%3E%3C/svg%3E" alt="">
+                    <span class="window-titlebar-title">JPG to PDF Converter</span>
+                    <div class="window-titlebar-btns">
+                        <button class="window-btn window-btn-min" data-action="minimize">_</button>
+                        <button class="window-btn window-btn-max" data-action="maximize">□</button>
+                        <button class="window-btn window-btn-close" data-action="close">×</button>
+                    </div>
+                </div>
+                <div class="window-content" style="background: linear-gradient(to bottom, #f0f4f8 0%, #d9e4f1 100%); padding: 0;">
+                    <div style="padding: 20px;">
+                        <!-- Header -->
+                        <div style="text-align: center; margin-bottom: 20px;">
+                            <div style="display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(to bottom, #fff 0%, #e8e8e8 100%); padding: 10px 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border: 1px solid #ccc;">
+                                <svg viewBox="0 0 32 32" style="width: 32px; height: 32px;">
+                                    <rect x="2" y="4" width="12" height="10" fill="#ffcc00" stroke="#e6a800" rx="2"/>
+                                    <circle cx="5" cy="8" r="1.5" fill="#ff6600"/>
+                                    <path d="M4 12 L6 9 L9 11 L12 7 L14 12 Z" fill="#66bb6a"/>
+                                    <text x="16" y="12" fill="#666" font-size="8" font-weight="bold">→</text>
+                                    <rect x="18" y="8" width="12" height="16" fill="#fff" stroke="#cc0000" rx="2"/>
+                                    <rect x="18" y="8" width="12" height="5" fill="#cc0000" rx="2"/>
+                                    <text x="24" y="12" text-anchor="middle" fill="white" font-size="4" font-weight="bold">PDF</text>
+                                </svg>
+                                <span style="font-size: 16px; font-weight: bold; color: #333;">JPG to PDF Converter</span>
+                            </div>
+                        </div>
+
+                        <!-- Drop Zone -->
+                        <div id="jpg2pdfDropZone" style="border: 2px dashed #7f9db9; border-radius: 8px; padding: 40px 20px; text-align: center; background: #fff; cursor: pointer; transition: all 0.3s ease;" 
+                             ondragover="event.preventDefault(); this.style.borderColor='#3399ff'; this.style.background='#e6f3ff';"
+                             ondragleave="this.style.borderColor='#7f9db9'; this.style.background='#fff';"
+                             ondrop="handleJpg2PdfDrop(event)"
+                             onclick="document.getElementById('jpg2pdfInput').click()">
+                            <svg viewBox="0 0 48 48" style="width: 48px; height: 48px; margin-bottom: 10px; opacity: 0.6;">
+                                <path d="M24 4 L24 32 M16 12 L24 4 L32 12" fill="none" stroke="#666" stroke-width="3" stroke-linecap="round"/>
+                                <path d="M8 28 L8 40 L40 40 L40 28" fill="none" stroke="#666" stroke-width="3" stroke-linecap="round"/>
+                            </svg>
+                            <p style="font-size: 14px; color: #333; margin: 0 0 5px 0;">Drag & Drop JPG/PNG images here</p>
+                            <p style="font-size: 11px; color: #666; margin: 0;">or click to browse files</p>
+                            <input type="file" id="jpg2pdfInput" accept="image/jpeg,image/png,image/jpg" multiple style="display: none;" onchange="handleJpg2PdfSelect(this)">
+                        </div>
+
+                        <!-- Preview Area -->
+                        <div id="jpg2pdfPreview" style="margin-top: 15px; display: none;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                <span style="font-size: 12px; font-weight: bold; color: #333;">Selected Images (<span id="jpg2pdfCount">0</span>)</span>
+                                <button onclick="clearJpg2PdfImages()" style="background: linear-gradient(to bottom, #fff 0%, #e8e8e8 100%); border: 1px solid #999; padding: 4px 10px; font-size: 11px; cursor: pointer; border-radius: 3px;">Clear All</button>
+                            </div>
+                            <div id="jpg2pdfThumbnails" style="display: flex; flex-wrap: wrap; gap: 10px; max-height: 150px; overflow-y: auto; padding: 10px; background: #fff; border: 1px solid #ccc; border-radius: 4px;"></div>
+                        </div>
+
+                        <!-- Options -->
+                        <div style="margin-top: 15px; padding: 15px; background: #fff; border: 1px solid #ccc; border-radius: 4px;">
+                            <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                                <div>
+                                    <label style="font-size: 11px; color: #333; display: block; margin-bottom: 4px;">Page Size:</label>
+                                    <select id="jpg2pdfPageSize" style="padding: 4px 8px; border: 1px solid #7f9db9; font-size: 11px;">
+                                        <option value="a4">A4 (210 × 297 mm)</option>
+                                        <option value="letter">Letter (8.5 × 11 in)</option>
+                                        <option value="fit">Fit to Image</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label style="font-size: 11px; color: #333; display: block; margin-bottom: 4px;">Orientation:</label>
+                                    <select id="jpg2pdfOrientation" style="padding: 4px 8px; border: 1px solid #7f9db9; font-size: 11px;">
+                                        <option value="auto">Auto</option>
+                                        <option value="portrait">Portrait</option>
+                                        <option value="landscape">Landscape</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label style="font-size: 11px; color: #333; display: block; margin-bottom: 4px;">Image Quality:</label>
+                                    <select id="jpg2pdfQuality" style="padding: 4px 8px; border: 1px solid #7f9db9; font-size: 11px;">
+                                        <option value="1">Original</option>
+                                        <option value="0.8" selected>High (80%)</option>
+                                        <option value="0.6">Medium (60%)</option>
+                                        <option value="0.4">Low (40%)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Convert Button -->
+                        <div style="margin-top: 15px; text-align: center;">
+                            <button id="jpg2pdfConvertBtn" onclick="convertJpg2Pdf()" disabled style="background: linear-gradient(to bottom, #5cb85c 0%, #449d44 100%); border: 1px solid #398439; color: white; padding: 10px 30px; font-size: 13px; font-weight: bold; cursor: pointer; border-radius: 4px; opacity: 0.5;">
+                                📄 Convert to PDF
+                            </button>
+                        </div>
+
+                        <!-- Progress -->
+                        <div id="jpg2pdfProgress" style="margin-top: 15px; display: none;">
+                            <div style="background: #e0e0e0; border-radius: 4px; overflow: hidden;">
+                                <div id="jpg2pdfProgressBar" style="height: 20px; background: linear-gradient(to bottom, #5cb85c 0%, #449d44 100%); width: 0%; transition: width 0.3s ease;"></div>
+                            </div>
+                            <p id="jpg2pdfProgressText" style="text-align: center; font-size: 11px; color: #666; margin-top: 5px;">Processing...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="window-statusbar">Ready - Select images to convert</div>
+            </div>
+        </div>
+
+        <!-- Start Menu -->
+        <div class="start-menu" id="startMenu">
+            <div class="start-menu-header">
+                <div class="start-menu-avatar">
+                    <img src="assets/images/avatar.png" alt="Avatar" onerror="this.parentElement.innerHTML='👤'">
+                </div>
+                <span class="start-menu-user">Phukit T.</span>
+            </div>
+            <div class="start-menu-body">
+                <div class="start-menu-left">
+                    <div class="start-menu-item" data-window="about">
+                        <img class="start-menu-item-icon" src="data:image/svg+xml,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='aboutGrad2' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2360c0ff'/%3E%3Cstop offset='100%25' style='stop-color:%234090d0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='16' cy='16' r='14' fill='url(%23aboutGrad2)' stroke='%232070b0' stroke-width='1'/%3E%3Ccircle cx='16' cy='9' r='2' fill='white'/%3E%3Crect x='14' y='13' width='4' height='10' fill='white' rx='1'/%3E%3C/svg%3E" alt="">
+                        <div class="start-menu-item-text">
+                            <span class="start-menu-item-title">About Me</span>
+                        </div>
+                    </div>
+                    <div class="start-menu-item" data-window="jpg2pdf">
+                        <img class="start-menu-item-icon" src="data:image/svg+xml,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='2' y='4' width='12' height='10' fill='%23ffcc00' stroke='%23e6a800' rx='2'/%3E%3Ccircle cx='5' cy='8' r='1.5' fill='%23ff6600'/%3E%3Cpath d='M4 12 L6 9 L9 11 L12 7 L14 12 Z' fill='%2366bb6a'/%3E%3Ctext x='16' y='12' fill='%23666' font-size='6' font-weight='bold'%3E→%3C/text%3E%3Crect x='18' y='10' width='12' height='16' fill='%23fff' stroke='%23cc0000' rx='2'/%3E%3Crect x='18' y='10' width='12' height='5' fill='%23cc0000' rx='2'/%3E%3Ctext x='24' y='14' text-anchor='middle' fill='white' font-size='4' font-weight='bold'%3EPDF%3C/text%3E%3C/svg%3E" alt="">
+                        <div class="start-menu-item-text">
+                            <span class="start-menu-item-title">JPG to PDF</span>
+                            <span class="start-menu-item-desc">Convert images</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="start-menu-right">
+                    <div class="start-menu-item" data-link="https://instagram.com">
+                        <img class="start-menu-item-icon" src="data:image/svg+xml,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='2' y='2' width='28' height='28' rx='6' fill='%23E1306C'/%3E%3Ccircle cx='16' cy='16' r='6' fill='none' stroke='white' stroke-width='2'/%3E%3Ccircle cx='24' cy='8' r='2' fill='white'/%3E%3C/svg%3E" alt="">
+                        <div class="start-menu-item-text">
+                            <span class="start-menu-item-title">Instagram</span>
+                        </div>
+                    </div>
+                    <div class="start-menu-item" data-link="https://github.com">
+                        <img class="start-menu-item-icon" src="data:image/svg+xml,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23181717'/%3E%3Cpath d='M16 6C10.48 6 6 10.48 6 16c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1.01.07 1.54 1.04 1.54 1.04.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02.8-.22 1.65-.33 2.5-.33.85 0 1.7.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.75c0 .27.18.58.69.48C23.13 24.17 26 20.42 26 16c0-5.52-4.48-10-10-10z' fill='white'/%3E%3C/svg%3E" alt="">
+                        <div class="start-menu-item-text">
+                            <span class="start-menu-item-title">Github</span>
+                        </div>
+                    </div>
+                    <div class="start-menu-item" data-link="https://linkedin.com">
+                        <img class="start-menu-item-icon" src="data:image/svg+xml,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='2' y='2' width='28' height='28' rx='4' fill='%230077B5'/%3E%3Crect x='7' y='13' width='4' height='12' fill='white'/%3E%3Ccircle cx='9' cy='9' r='2' fill='white'/%3E%3Cpath d='M14 13h4v2c.5-1 2-2 4-2 3 0 5 2 5 6v6h-4v-5c0-2-1-3-2-3s-2 1-2 3v5h-4v-12z' fill='white'/%3E%3C/svg%3E" alt="">
+                        <div class="start-menu-item-text">
+                            <span class="start-menu-item-title">LinkedIn</span>
+                        </div>
+                    </div>
+                    <div class="start-menu-separator"></div>
+                    <div class="start-menu-item">
+                        <img class="start-menu-item-icon" src="data:image/svg+xml,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='4' y='4' width='24' height='24' fill='%23f0f0f0' stroke='%23999' rx='2'/%3E%3Cpath d='M10 12 L16 18 L22 12' stroke='%23666' stroke-width='2' fill='none'/%3E%3C/svg%3E" alt="">
+                        <div class="start-menu-item-text">
+                            <span class="start-menu-item-title">Recently Used</span>
+                        </div>
+                    </div>
+                    <div class="start-menu-item">
+                        <img class="start-menu-item-icon" src="data:image/svg+xml,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='2' y='2' width='28' height='28' fill='%23000' rx='2'/%3E%3Ctext x='6' y='20' fill='white' font-family='monospace' font-size='10'%3EC:\%3E_%3C/text%3E%3C/svg%3E" alt="">
+                        <div class="start-menu-item-text">
+                            <span class="start-menu-item-title">Command Prompt</span>
+                        </div>
+                    </div>
+                    <div class="start-menu-item">
+                        <img class="start-menu-item-icon" src="data:image/svg+xml,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='4' y='6' width='24' height='20' fill='%23e3f2fd' stroke='%235c9ccc' rx='2'/%3E%3Crect x='8' y='10' width='8' height='8' fill='%2364b5f6'/%3E%3Crect x='18' y='10' width='6' height='6' fill='%2364b5f6'/%3E%3C/svg%3E" alt="">
+                        <div class="start-menu-item-text">
+                            <span class="start-menu-item-title">Image Viewer</span>
+                        </div>
+                    </div>
+                    <div class="start-menu-item" data-window="resume">
+                        <img class="start-menu-item-icon" src="data:image/svg+xml,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='5' y='2' width='22' height='28' fill='%23fff' stroke='%23999' stroke-width='1' rx='1'/%3E%3Crect x='5' y='2' width='22' height='7' fill='%23cc0000' rx='1'/%3E%3Crect x='5' y='8' width='22' height='1' fill='%23cc0000'/%3E%3Ctext x='16' y='8' text-anchor='middle' fill='white' font-size='5' font-weight='bold'%3EPDF%3C/text%3E%3Crect x='8' y='12' width='16' height='1.5' fill='%23666'/%3E%3Crect x='8' y='15' width='16' height='1.5' fill='%23666'/%3E%3Crect x='8' y='18' width='14' height='1.5' fill='%23666'/%3E%3Crect x='8' y='21' width='10' height='1.5' fill='%23666'/%3E%3C/svg%3E" alt="">
+                        <div class="start-menu-item-text">
+                            <span class="start-menu-item-title">My Resume</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="start-menu-footer">
+                <div class="all-programs">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                        <polygon points="6 4 18 12 6 20"/>
+                    </svg>
+                    <span>All Programs</span>
+                </div>
+                <div class="start-menu-footer-btns">
+                    <div class="start-menu-footer-btn" id="logOffBtn">
+                        <svg viewBox="0 0 24 24" fill="#f5d442">
+                            <rect x="2" y="2" width="20" height="20" rx="2"/>
+                        </svg>
+                        <span>Log Off</span>
+                    </div>
+                    <div class="start-menu-footer-btn" id="shutDownBtn">
+                        <svg viewBox="0 0 24 24" fill="#ff6b6b">
+                            <circle cx="12" cy="12" r="10"/>
+                        </svg>
+                        <span>Shut Down</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Welcome Popup (Outside desktop for proper fixed positioning) -->
+    <div class="welcome-popup active" id="welcomePopup">
+        <span class="welcome-popup-close" id="welcomeClose">×</span>
+        <div class="welcome-popup-header">
+            <svg class="welcome-popup-icon" viewBox="0 0 24 24">
+                <defs>
+                    <linearGradient id="welcomeGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#4da6ff"/>
+                        <stop offset="100%" style="stop-color:#0066cc"/>
+                    </linearGradient>
+                </defs>
+                <circle cx="12" cy="12" r="10" fill="url(#welcomeGrad2)" stroke="#004499" stroke-width="1"/>
+                <text x="12" y="16" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold" font-family="serif" font-style="italic">i</text>
+            </svg>
+            <span class="welcome-popup-title">Welcome to Phukit T. XP</span>
+        </div>
+        <div class="welcome-popup-body">
+            A faithful XP-inspired interface, custom-built to showcase my work and attention to detail.
+            <div class="welcome-popup-links">
+                Get Started: <span class="welcome-popup-link" data-window="about">About Me</span> | <span class="welcome-popup-link" data-window="resume">My Resume</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- CRT Effect Tooltip (Outside desktop for proper fixed positioning) -->
+    <div class="crt-tooltip" id="crtTooltip">CRT Effects: OFF</div>
+
+    <!-- Taskbar -->
+    <div class="taskbar" id="taskbar">
+        <button class="start-button" id="startButton"></button>
+        <div class="taskbar-items" id="taskbarItems"></div>
+        <div class="system-tray">
+            <div class="tray-icons">
+                <!-- Information Icon -->
+                <div class="tray-icon-btn" id="infoBtn" title="Information">
+                    <svg viewBox="0 0 24 24">
+                        <defs>
+                            <linearGradient id="infoGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#90EE90"/>
+                                <stop offset="100%" style="stop-color:#228B22"/>
+                            </linearGradient>
+                        </defs>
+                        <circle cx="12" cy="12" r="9" fill="url(#infoGrad)" stroke="#006400" stroke-width="1"/>
+                        <text x="12" y="16" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold" font-family="serif" font-style="italic">i</text>
+                    </svg>
+                </div>
+                <!-- CRT Effects Icon -->
+                <div class="tray-icon-btn" id="crtBtn" title="CRT Effects: OFF">
+                    <svg viewBox="0 0 24 24">
+                        <rect x="3" y="5" width="18" height="13" rx="1" fill="#333" stroke="#666" stroke-width="1"/>
+                        <rect x="5" y="7" width="14" height="9" fill="#4a90d9"/>
+                        <rect x="8" y="18" width="8" height="2" fill="#555"/>
+                        <rect x="6" y="20" width="12" height="1" fill="#444"/>
+                    </svg>
+                </div>
+                <!-- Fullscreen Icon -->
+                <div class="tray-icon-btn" id="fullscreenBtn" title="Toggle Fullscreen">
+                    <svg viewBox="0 0 24 24">
+                        <defs>
+                            <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#90EE90"/>
+                                <stop offset="100%" style="stop-color:#228B22"/>
+                            </linearGradient>
+                        </defs>
+                        <path d="M12 2 L20 6 L20 12 C20 17 12 22 12 22 C12 22 4 17 4 12 L4 6 Z" fill="url(#shieldGrad)" stroke="#006400" stroke-width="1"/>
+                        <path d="M9 12 L11 14 L15 10" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </div>
+            <span class="tray-clock" id="trayClock">12:00 PM</span>
+        </div>
+    </div>
+
+    <!-- Apply Config Immediately -->
+    <script>
+    (function() {
+        try {
+            const config = JSON.parse(localStorage.getItem('xp_portfolio_config') || '{}');
+            
+            // Apply Boot Screen Text
+            if (config.bootText) {
+                const bootName = document.querySelector('.boot-name');
+                if (bootName) {
+                    if (config.bootText.left) bootName.textContent = config.bootText.left;
+                    if (config.bootText.fontName) bootName.style.fontSize = config.bootText.fontName + 'px';
+                }
+                
+                const bootXp = document.querySelector('.boot-xp');
+                if (bootXp) {
+                    if (config.bootText.right) bootXp.textContent = config.bootText.right;
+                    if (config.bootText.fontXP) bootXp.style.fontSize = config.bootText.fontXP + 'px';
+                }
+                
+                const bootSubtitle = document.querySelector('.boot-subtitle');
+                if (bootSubtitle) {
+                    if (config.bootText.subtitle) bootSubtitle.textContent = config.bootText.subtitle;
+                    if (config.bootText.fontSubtitle) bootSubtitle.style.fontSize = config.bootText.fontSubtitle + 'px';
+                }
+                
+                const bootHint = document.querySelector('.boot-hint');
+                if (bootHint) {
+                    if (config.bootText.bottomLeft) bootHint.innerHTML = config.bootText.bottomLeft.replace(/\n/g, '<br>');
+                    if (config.bootText.fontHint) bootHint.style.fontSize = config.bootText.fontHint + 'px';
+                }
+                
+                const bootBrand = document.querySelector('.boot-brand');
+                if (bootBrand) {
+                    if (config.bootText.bottomRight) bootBrand.innerHTML = config.bootText.bottomRight;
+                    if (config.bootText.fontBrand) bootBrand.style.fontSize = config.bootText.fontBrand + 'px';
+                }
+            }
+            
+            // Apply Skills
+            if (config.aboutMe) {
+                // Apply Skills Title
+                if (config.aboutMe.skillsTitle) {
+                    const skillsHeader = document.getElementById('skillsHeader');
+                    if (skillsHeader) skillsHeader.textContent = config.aboutMe.skillsTitle;
+                }
+                
+                // Apply Skills List
+                if (config.aboutMe.skills) {
+                    const skillsContainer = document.getElementById('aboutSkills');
+                    if (skillsContainer) {
+                        const skills = config.aboutMe.skills.split('\n').filter(s => s.trim());
+                        skillsContainer.innerHTML = skills.map(s => '<div class="sidebar-item">' + s + '</div>').join('');
+                    }
+                }
+                
+                // Apply Software Title
+                if (config.aboutMe.softwareTitle) {
+                    const softwareHeader = document.getElementById('softwareHeader');
+                    if (softwareHeader) softwareHeader.textContent = config.aboutMe.softwareTitle;
+                }
+                
+                // Apply Software List
+                if (config.aboutMe.software) {
+                    const softwareContainer = document.getElementById('aboutSoftware');
+                    if (softwareContainer) {
+                        const software = config.aboutMe.software.split('\n').filter(s => s.trim());
+                        softwareContainer.innerHTML = software.map(s => '<div class="sidebar-item">' + s + '</div>').join('');
+                    }
+                }
+            }
+        } catch(e) { console.error('Config error:', e); }
+    })();
+    </script>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="js/window-manager.js"></script>
+    <script src="js/clock.js"></script>
+    <script src="js/admin.js"></script>
+    <script src="js/jpg2pdf.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
