@@ -1127,52 +1127,6 @@ body {
     }
 }
 
-/* ===== Mobile Warning ===== */
-.mobile-warning {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, #4b7cc5 0%, #245edb 100%);
-    z-index: 99999;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 40px;
-    text-align: center;
-    color: #fff;
-}
-
-.mobile-warning-icon {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 20px;
-}
-
-.mobile-warning h2 {
-    font-size: 24px;
-    font-weight: bold;
-    font-family: var(--font-primary);
-    margin-bottom: 16px;
-}
-
-.mobile-warning p {
-    font-size: 14px;
-    font-family: var(--font-primary);
-    line-height: 1.5;
-    max-width: 300px;
-}
-
-@media (max-width: 800px) {
-    .mobile-warning {
-        display: flex;
-    }
-    .desktop, .taskbar {
-        display: none;
-    }
-}
 
 /* ===== About Me Window ===== */
 .window-toolbar {
