@@ -8,10 +8,38 @@
     let windowManager = null;
     let clock = null;
 
+    function deepMerge(base, override) {
+        const result = Object.assign({}, base);
+        for (const key of Object.keys(override)) {
+            if (
+                override[key] !== null &&
+                typeof override[key] === 'object' &&
+                !Array.isArray(override[key]) &&
+                typeof base[key] === 'object' &&
+                base[key] !== null
+            ) {
+                result[key] = deepMerge(base[key], override[key]);
+            } else {
+                result[key] = override[key];
+            }
+        }
+        return result;
+    }
+
+    async function loadConfig() {
+        let base = {};
+        try {
+            const res = await fetch('data/config.json');
+            if (res.ok) base = await res.json();
+        } catch (_) { /* offline or file missing — fall through to localStorage */ }
+        const draft = JSON.parse(localStorage.getItem('xp_portfolio_config') || '{}');
+        return deepMerge(base, draft);
+    }
+
     /**
      * Initialize the application
      */
-    function init() {
+    async function init() {
         // Boot screen fade out after 3.5 seconds
         const bootScreen = document.getElementById('bootScreen');
         if (bootScreen) {
@@ -30,7 +58,7 @@
         clock = new Clock('trayClock');
 
         // Apply saved configuration from admin panel
-        applyConfig();
+        await applyConfig();
 
         // Setup additional event listeners
         setupEventListeners();
@@ -41,8 +69,8 @@
     /**
      * Apply configuration from localStorage (admin panel settings)
      */
-    function applyConfig() {
-        const config = JSON.parse(localStorage.getItem('xp_portfolio_config') || '{}');
+    async function applyConfig() {
+        const config = await loadConfig();
 
         // Apply wallpaper
         if (config.images) {
@@ -468,8 +496,8 @@
 
     // Initialize when DOM is ready
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
+        document.addEventListener('DOMContentLoaded', () => init().catch(console.error));
     } else {
-        init();
+        init().catch(console.error);
     }
 })();
