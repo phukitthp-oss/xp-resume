@@ -5,8 +5,17 @@
 
 // Configuration
 const CONFIG_KEY = 'xp_portfolio_config';
-const PASSWORD_KEY = 'xp_admin_password';
-const DEFAULT_PASSWORD = 'admin123';
+const PASSWORD_KEY = 'xp_admin_password_hash';
+
+async function hashPassword(plain) {
+    const buf = await crypto.subtle.digest(
+        'SHA-256',
+        new TextEncoder().encode(plain)
+    );
+    return Array.from(new Uint8Array(buf))
+        .map(b => b.toString(16).padStart(2, '0'))
+        .join('');
+}
 
 // ==========================================
 // Error Logging System
@@ -145,18 +154,45 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 // Authentication
-function adminAuth() {
-    const password = document.getElementById('adminPassword').value;
-    const storedPassword = localStorage.getItem(PASSWORD_KEY) || DEFAULT_PASSWORD;
-    
-    if (password === storedPassword) {
+async function adminAuth() {
+    const input = document.getElementById('adminPassword').value;
+    if (!input) return;
+    const stored = localStorage.getItem(PASSWORD_KEY);
+    if (!stored) {
+        // No password set yet — show setup flow
+        showFirstLoginSection();
+        return;
+    }
+    const hash = await hashPassword(input);
+    if (hash === stored) {
         document.getElementById('adminLogin').style.display = 'none';
         document.getElementById('adminPanel').style.display = 'flex';
         loadAllData();
-        showMessage('✅ Login successful!', 'success');
+        showMessage('Login successful', 'success');
     } else {
-        alert('❌ Incorrect password!');
+        const errEl = document.getElementById('loginError');
+        if (errEl) errEl.textContent = 'Incorrect password';
     }
+}
+
+function showFirstLoginSection() {
+    document.getElementById('loginBox').style.display = 'none';
+    document.getElementById('firstLoginSection').style.display = 'block';
+}
+
+async function setFirstPassword() {
+    const pw = document.getElementById('firstPassword').value;
+    const pw2 = document.getElementById('firstPasswordConfirm').value;
+    const errEl = document.getElementById('firstLoginError');
+    if (pw.length < 8) { errEl.textContent = 'Password must be at least 8 characters'; return; }
+    if (pw !== pw2) { errEl.textContent = 'Passwords do not match'; return; }
+    const hash = await hashPassword(pw);
+    localStorage.setItem(PASSWORD_KEY, hash);
+    document.getElementById('firstLoginSection').style.display = 'none';
+    document.getElementById('adminLogin').style.display = 'none';
+    document.getElementById('adminPanel').style.display = 'flex';
+    loadAllData();
+    showMessage('Password set. Welcome!', 'success');
 }
 
 function logout() {
@@ -194,6 +230,18 @@ function loadConfig() {
 
 function saveConfig(config) {
     localStorage.setItem(CONFIG_KEY, JSON.stringify(config));
+    offerConfigDownload(config);
+}
+
+function offerConfigDownload(config) {
+    const existing = URL.createObjectURL(
+        new Blob([JSON.stringify(config, null, 2)], { type: 'application/json' })
+    );
+    const btn = document.getElementById('downloadConfigBtn');
+    if (!btn) return;
+    btn.href = existing;
+    btn.download = 'config.json';
+    btn.classList.remove('hidden');
 }
 
 function loadAllData() {
@@ -1742,29 +1790,16 @@ function saveCrtSettings() {
 }
 
 // Settings Management
-function changePassword() {
-    const newPassword = document.getElementById('newPassword').value;
-    const confirmPassword = document.getElementById('confirmPassword').value;
-    
-    if (!newPassword || !confirmPassword) {
-        logError('Please fill in both password fields', 'changePassword');
-        return;
-    }
-    
-    if (newPassword !== confirmPassword) {
-        logError('Passwords do not match', 'changePassword');
-        return;
-    }
-    
-    if (newPassword.length < 6) {
-        logError('Password must be at least 6 characters', 'changePassword');
-        return;
-    }
-    
-    localStorage.setItem(PASSWORD_KEY, newPassword);
+async function changePassword() {
+    const newPw = document.getElementById('newPassword').value;
+    const confirmPw = document.getElementById('confirmPassword').value;
+    if (newPw.length < 8) { showMessage('Password must be at least 8 characters', 'error'); return; }
+    if (newPw !== confirmPw) { showMessage('Passwords do not match', 'error'); return; }
+    const hash = await hashPassword(newPw);
+    localStorage.setItem(PASSWORD_KEY, hash);
     document.getElementById('newPassword').value = '';
     document.getElementById('confirmPassword').value = '';
-    showMessage('✅ Password changed successfully!', 'success');
+    showMessage('Password updated', 'success');
 }
 
 function exportConfig() {
@@ -2353,4 +2388,5 @@ if (typeof window !== 'undefined') {
     window.getCategories = getCategories;
     window.toggleCategoryVisibility = toggleCategoryVisibility;
     window.saveCategories = saveCategories;
+    window.setFirstPassword = setFirstPassword;
 }
