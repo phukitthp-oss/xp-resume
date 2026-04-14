@@ -157,11 +157,22 @@ document.addEventListener('DOMContentLoaded', async () => {
 async function adminAuth() {
     const input = document.getElementById('adminPassword').value;
     if (!input) return;
-    const stored = localStorage.getItem(PASSWORD_KEY);
+    let stored = localStorage.getItem(PASSWORD_KEY);
     if (!stored) {
-        // No password set yet — show setup flow
-        showFirstLoginSection();
-        return;
+        // Check for old plaintext password (migration from pre-hash version)
+        const oldKey = 'xp_admin_password';
+        const oldPlain = localStorage.getItem(oldKey);
+        if (oldPlain) {
+            // Migrate: hash the old password and store under new key
+            const migratedHash = await hashPassword(oldPlain);
+            localStorage.setItem(PASSWORD_KEY, migratedHash);
+            localStorage.removeItem(oldKey);
+            stored = migratedHash;
+        } else {
+            // No password set yet — show setup flow
+            showFirstLoginSection();
+            return;
+        }
     }
     const hash = await hashPassword(input);
     if (hash === stored) {
@@ -234,12 +245,14 @@ function saveConfig(config) {
 }
 
 function offerConfigDownload(config) {
-    const existing = URL.createObjectURL(
-        new Blob([JSON.stringify(config, null, 2)], { type: 'application/json' })
-    );
     const btn = document.getElementById('downloadConfigBtn');
     if (!btn) return;
-    btn.href = existing;
+    if (btn.href && btn.href.startsWith('blob:')) {
+        URL.revokeObjectURL(btn.href);
+    }
+    btn.href = URL.createObjectURL(
+        new Blob([JSON.stringify(config, null, 2)], { type: 'application/json' })
+    );
     btn.download = 'config.json';
     btn.classList.remove('hidden');
 }
