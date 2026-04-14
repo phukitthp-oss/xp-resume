@@ -1,0 +1,71 @@
+{
+  "content": {
+    "bootTitle": "Phukit T.",
+    "bootTitleSuffix": "xp",
+    "bootSubtitle": "Visual Designer",
+    "bootHint": "For the best experience\nEnter Full Screen (F11)",
+    "bootPortfolio": "Portfolio®",
+    "loginTitle": "Phukit T.",
+    "loginTitleSuffix": "xp",
+    "loginSubtitle": "Visual Designer",
+    "userName": "Phukit T.",
+    "userRole": "Visual Designer"
+  },
+  "profile": {
+    "email": "",
+    "location": "",
+    "instagram": "",
+    "github": "",
+    "linkedin": ""
+  },
+  "bootText": {
+    "left": "Phukit T.",
+    "right": "xp",
+    "subtitle": "Visual Designer",
+    "bottomLeft": "For the best experience\nEnter Full Screen (F11)",
+    "bottomRight": "Portfolio®",
+    "fontName": 72,
+    "fontXP": 48,
+    "fontSubtitle": 24,
+    "fontHint": 14,
+    "fontBrand": 36
+  },
+  "bootLoader": {
+    "loops": 1,
+    "width": 220,
+    "height": 22,
+    "radius": 0,
+    "duration": 2
+  },
+  "bootScreenDuration": 3500,
+  "iconSize": 48,
+  "iconFontSize": 11,
+  "iconGap": 16,
+  "iconMargin": 20,
+  "crtEffect": {
+    "scanlineOpacity": 0.5,
+    "vignetteOpacity": 0,
+    "brightness": 100
+  },
+  "images": {},
+  "resume": {
+    "bgColor": "#ffffff"
+  },
+  "aboutMe": {
+    "title": "About Me",
+    "paragraph1": "",
+    "paragraph2": "",
+    "paragraph3": "",
+    "paragraph4": "",
+    "skillsTitle": "Skills",
+    "skills": "",
+    "softwareTitle": "Software",
+    "software": "",
+    "sidebarColor": "#1a3c5e",
+    "mainColor": "#f0f4f8",
+    "titleSize": 28,
+    "fontSize": 14,
+    "avatarSize": 80
+  },
+  "projects": []
+}
