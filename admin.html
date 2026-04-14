@@ -11,12 +11,20 @@
     <div class="admin-container">
         <!-- Login Screen -->
         <div class="admin-login" id="adminLogin">
-            <div class="login-box">
-                <h1>🔐 Admin Panel</h1>
+            <div class="login-box" id="loginBox">
+                <h1>Admin Panel</h1>
                 <p>Enter password to access content management</p>
-                <input type="password" id="adminPassword" placeholder="Enter password">
+                <input type="password" id="adminPassword" placeholder="Password" onkeydown="if(event.key==='Enter') adminAuth()">
                 <button onclick="adminAuth()">Login</button>
-                <p class="hint">Default password: admin123</p>
+                <p id="loginError" style="color:#c00;font-size:13px;min-height:18px;"></p>
+            </div>
+            <div id="firstLoginSection" style="display:none;" class="login-box">
+                <h1>Set Admin Password</h1>
+                <p>No password is configured. Set one now (min 8 characters).</p>
+                <input type="password" id="firstPassword" placeholder="New password">
+                <input type="password" id="firstPasswordConfirm" placeholder="Confirm password">
+                <button onclick="setFirstPassword()">Set Password</button>
+                <p id="firstLoginError" style="color:#c00;font-size:13px;min-height:18px;"></p>
             </div>
         </div>
 
@@ -549,9 +557,12 @@ Enter Full Screen (F11)</textarea>
                         </div>
                         <hr>
                         <div class="editor-group">
-                            <label>Export Configuration</label>
-                            <p>Download all settings as JSON file</p>
-                            <button onclick="exportConfig()" class="btn-secondary">Export Config</button>
+                            <label>Download config.json</label>
+                            <p>Save all settings as <code>data/config.json</code> in your repo to make them permanent.</p>
+                            <a id="downloadConfigBtn" class="btn-primary hidden" style="display:inline-block;text-decoration:none;padding:8px 16px;">
+                                ⬇ Download config.json
+                            </a>
+                            <button onclick="exportConfig()" class="btn-secondary" style="margin-top:6px;">Export (legacy)</button>
                         </div>
                         <div class="editor-group">
                             <label>Import Configuration</label>
