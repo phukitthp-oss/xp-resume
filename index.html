@@ -36,16 +36,87 @@
         </div>
     </div>
 
-    <!-- Mobile Warning -->
-    <div class="mobile-warning">
-        <svg class="mobile-warning-icon" viewBox="0 0 88 88">
-            <rect x="2" y="2" width="38" height="38" fill="#f25022"/>
-            <rect x="48" y="2" width="38" height="38" fill="#7fba00"/>
-            <rect x="2" y="48" width="38" height="38" fill="#00a4ef"/>
-            <rect x="48" y="48" width="38" height="38" fill="#ffb900"/>
-        </svg>
-        <h2>Desktop Experience Required</h2>
-        <p>This Windows XP experience is best viewed on a desktop or laptop computer. Please visit on a larger screen for the full experience.</p>
+    <!-- Mobile View (shown only on screens ≤ 768px) -->
+    <div id="mobile-view">
+        <header class="mv-header">
+            <svg class="mv-win-flag" viewBox="0 0 44 44">
+                <path d="M0 6L17 3.5L17 21L0 21Z" fill="#f25022"/>
+                <path d="M20 3L44 0L44 21L20 21Z" fill="#7fba00"/>
+                <path d="M0 23L17 23L17 40.5L0 38Z" fill="#00a4ef"/>
+                <path d="M20 23L44 23L44 44L20 41Z" fill="#ffb900"/>
+            </svg>
+            <div class="mv-header-text">
+                <div><span class="mv-name">Phukit T.</span><span class="mv-xp">xp</span></div>
+                <div class="mv-subtitle">Portfolio</div>
+            </div>
+        </header>
+
+        <nav class="mv-tabs">
+            <button class="mv-tab active" data-target="mv-resume">Resume</button>
+            <button class="mv-tab" data-target="mv-about">About</button>
+            <button class="mv-tab" data-target="mv-skills">Skills</button>
+        </nav>
+
+        <section class="mv-section" id="mv-resume">
+            <div class="mv-resume-viewer">
+                <img class="mv-resume-img" src="4.jpg" alt="Resume Page 1">
+                <img class="mv-resume-img" src="6.jpg" alt="Resume Page 2">
+            </div>
+        </section>
+
+        <section class="mv-section mv-hidden" id="mv-about">
+            <div class="mv-about-content">
+                <div class="mv-about-block">
+                    <p class="mv-about-text" id="mvAboutParagraph1">I'm Phukit T., a visual designer. I tackle diverse design challenges and focus on bringing ideas to life, whether that's solving problems for clients or exploring ambitious concepts like recreating an entire operating system in a browser.</p>
+                </div>
+                <div class="mv-about-block">
+                    <p class="mv-about-text" id="mvAboutParagraph2">Growing up in New Zealand, I saw how powerful design could be through sport, particularly with rugby and the All Blacks. Every jersey, every logo, every piece of visual identity carried the weight of a nation's pride.</p>
+                </div>
+                <div class="mv-about-block">
+                    <p class="mv-about-text" id="mvAboutParagraph3">After committing to design in my twenties, I completed a Diploma of Graphic Design at Queensland TAFE and started working with clients on anything from event video packages to front-end UI projects.</p>
+                </div>
+                <div class="mv-about-block">
+                    <p class="mv-about-text" id="mvAboutParagraph4">I first discovered focus, discipline, and the drive to constantly push standards through playing rugby and design brought all of that back. I'm obsessed with details, process, and raising my own bar with every project.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mv-section mv-hidden" id="mv-skills">
+            <div class="mv-skills-content">
+                <div class="mv-skills-group">
+                    <h3 class="mv-group-title">Skills</h3>
+                    <div class="mv-skill-tags" id="mvSkillTags">
+                        <span class="mv-tag">Graphic Design</span>
+                        <span class="mv-tag">Web Design</span>
+                        <span class="mv-tag">Social Graphics</span>
+                        <span class="mv-tag">Video Production</span>
+                        <span class="mv-tag">UX/UI Design</span>
+                        <span class="mv-tag">Attention to Detail</span>
+                        <span class="mv-tag">Creative Thinking</span>
+                        <span class="mv-tag">Problem Solving</span>
+                    </div>
+                </div>
+                <div class="mv-skills-group">
+                    <h3 class="mv-group-title">Software</h3>
+                    <div class="mv-skill-tags" id="mvSoftwareTags">
+                        <span class="mv-tag">Adobe CC</span>
+                        <span class="mv-tag">VS Code</span>
+                        <span class="mv-tag">Claude</span>
+                        <span class="mv-tag">ChatGPT</span>
+                        <span class="mv-tag">Cursor</span>
+                        <span class="mv-tag">WordPress</span>
+                    </div>
+                </div>
+                <div class="mv-skills-group">
+                    <h3 class="mv-group-title">Connect</h3>
+                    <div class="mv-social-links">
+                        <a class="mv-social-btn" href="#" id="mvSocialInstagram">📸 Instagram</a>
+                        <a class="mv-social-btn" href="#" id="mvSocialGithub">💻 GitHub</a>
+                        <a class="mv-social-btn" href="#" id="mvSocialLinkedin">💼 LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 
     <!-- Desktop -->
@@ -570,5 +641,61 @@
     <script src="js/admin.js"></script>
     <script src="js/jpg2pdf.js"></script>
     <script src="js/main.js"></script>
+
+    <!-- Mobile View Logic -->
+    <script>
+    (function() {
+        // Tab switching
+        document.querySelectorAll('.mv-tab').forEach(function(tab) {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.mv-tab').forEach(function(t) { t.classList.remove('active'); });
+                document.querySelectorAll('.mv-section').forEach(function(s) { s.classList.add('mv-hidden'); });
+                tab.classList.add('active');
+                var target = document.getElementById(tab.dataset.target);
+                if (target) target.classList.remove('mv-hidden');
+            });
+        });
+
+        // Sync desktop data → mobile after page loads
+        window.addEventListener('load', function() {
+            // Social links
+            [['Instagram','mvSocialInstagram'], ['Github','mvSocialGithub'], ['Linkedin','mvSocialLinkedin']].forEach(function(pair) {
+                var src = document.getElementById('social' + pair[0] + 'Link');
+                var dst = document.getElementById(pair[1]);
+                if (src && dst && src.href && !src.href.endsWith('#')) {
+                    dst.href = src.href;
+                    dst.target = '_blank';
+                }
+            });
+
+            // About paragraphs
+            for (var i = 1; i <= 4; i++) {
+                var src = document.getElementById('aboutParagraph' + i);
+                var dst = document.getElementById('mvAboutParagraph' + i);
+                if (src && dst && src.textContent.trim()) dst.textContent = src.textContent;
+            }
+
+            // Skills
+            var srcSkills = document.getElementById('aboutSkills');
+            var dstSkills = document.getElementById('mvSkillTags');
+            if (srcSkills && dstSkills) {
+                var items = srcSkills.querySelectorAll('.sidebar-item');
+                if (items.length) dstSkills.innerHTML = Array.from(items).map(function(el) {
+                    return '<span class="mv-tag">' + el.textContent + '</span>';
+                }).join('');
+            }
+
+            // Software
+            var srcSoft = document.getElementById('aboutSoftware');
+            var dstSoft = document.getElementById('mvSoftwareTags');
+            if (srcSoft && dstSoft) {
+                var items2 = srcSoft.querySelectorAll('.sidebar-item');
+                if (items2.length) dstSoft.innerHTML = Array.from(items2).map(function(el) {
+                    return '<span class="mv-tag">' + el.textContent + '</span>';
+                }).join('');
+            }
+        });
+    })();
+    </script>
 </body>
 </html>

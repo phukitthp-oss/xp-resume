@@ -2050,3 +2050,223 @@ a.sidebar-item:hover {
     font-size: 10px;
     font-family: var(--font-primary);
 }
+
+
+/* ===== Mobile View ===== */
+#mobile-view {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    html, body {
+        overflow-x: hidden;
+        overflow-y: auto;
+        height: auto;
+        min-height: 100%;
+    }
+
+    .desktop,
+    .welcome-popup,
+    .taskbar {
+        display: none !important;
+    }
+
+    #mobile-view {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        background: #e8e8e8;
+    }
+
+    /* Header */
+    .mv-header {
+        background: linear-gradient(to bottom, #1f5fc9 0%, #0542b3 100%);
+        padding: 12px 16px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    }
+
+    .mv-win-flag {
+        width: 36px;
+        height: 36px;
+        flex-shrink: 0;
+    }
+
+    .mv-name {
+        font-family: 'Segoe UI', Tahoma, sans-serif;
+        font-size: 24px;
+        font-weight: 300;
+        color: #fff;
+        letter-spacing: -1px;
+    }
+
+    .mv-xp {
+        font-family: 'Segoe UI', Tahoma, sans-serif;
+        font-size: 16px;
+        font-weight: 700;
+        font-style: italic;
+        color: #ff6600;
+        vertical-align: super;
+        margin-left: 2px;
+    }
+
+    .mv-subtitle {
+        font-size: 11px;
+        color: #aad0ff;
+        margin-top: 2px;
+        font-family: 'Tahoma', sans-serif;
+    }
+
+    /* Tab Navigation */
+    .mv-tabs {
+        display: flex;
+        background: #003c74;
+        border-bottom: 2px solid #ff6600;
+        position: sticky;
+        top: 62px;
+        z-index: 99;
+    }
+
+    .mv-tab {
+        flex: 1;
+        padding: 11px 4px;
+        background: none;
+        border: none;
+        border-bottom: 3px solid transparent;
+        margin-bottom: -2px;
+        color: #aad0ff;
+        font-family: 'Tahoma', sans-serif;
+        font-size: 12px;
+        cursor: pointer;
+        transition: background 0.15s, color 0.15s;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .mv-tab.active {
+        color: #fff;
+        background: rgba(255,255,255,0.08);
+        border-bottom-color: #ff6600;
+    }
+
+    /* Sections */
+    .mv-section {
+        flex: 1;
+    }
+
+    .mv-hidden {
+        display: none !important;
+    }
+
+    /* Resume section */
+    .mv-resume-viewer {
+        background: #5a5a5a;
+        padding: 14px 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+        min-height: calc(100vh - 120px);
+    }
+
+    .mv-resume-img {
+        width: 100%;
+        max-width: 600px;
+        height: auto;
+        display: block;
+        box-shadow: 0 3px 16px rgba(0,0,0,0.55);
+    }
+
+    /* About section */
+    .mv-about-content {
+        padding: 14px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .mv-about-block {
+        background: #fff;
+        border-radius: 4px;
+        padding: 14px;
+        border-left: 3px solid #0054e3;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .mv-about-text {
+        font-family: 'Tahoma', sans-serif;
+        font-size: 13px;
+        color: #333;
+        line-height: 1.65;
+    }
+
+    /* Skills section */
+    .mv-skills-content {
+        padding: 14px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .mv-skills-group {
+        background: #fff;
+        border-radius: 4px;
+        padding: 14px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .mv-group-title {
+        font-family: 'Tahoma', sans-serif;
+        font-size: 11px;
+        font-weight: bold;
+        color: #003c74;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        margin-bottom: 10px;
+        padding-bottom: 6px;
+        border-bottom: 1px solid #d0dce8;
+    }
+
+    .mv-skill-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+    }
+
+    .mv-tag {
+        background: #ece9d8;
+        border: 1px solid #b0b8c8;
+        border-radius: 3px;
+        padding: 5px 10px;
+        font-size: 12px;
+        color: #003c74;
+        font-family: 'Tahoma', sans-serif;
+    }
+
+    .mv-social-links {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .mv-social-btn {
+        display: block;
+        background: linear-gradient(to bottom, #f4f2e8 0%, #dbd8c8 100%);
+        border: 1px solid #aca899;
+        border-radius: 3px;
+        padding: 12px 14px;
+        font-family: 'Tahoma', sans-serif;
+        font-size: 13px;
+        color: #003c74;
+        text-decoration: none;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .mv-social-btn:active {
+        background: linear-gradient(to bottom, #dbd8c8 0%, #f4f2e8 100%);
+    }
+}
