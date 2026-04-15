@@ -1407,6 +1407,9 @@ a.sidebar-item:hover {
 .resume-container {
     box-shadow: 0 4px 20px rgba(0,0,0,0.5);
     background: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
 .resume-cv-image {

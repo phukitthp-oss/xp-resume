@@ -512,11 +512,13 @@ class WindowManager {
             saveBtn.addEventListener('click', () => {
                 const cvImg = document.getElementById('resumeCV');
                 if (cvImg && cvImg.src && !cvImg.src.includes('data:image/svg+xml')) {
-                    // Create download link for the image
-                    const link = document.createElement('a');
-                    link.download = 'resume.png';
-                    link.href = cvImg.src;
-                    link.click();
+                    const allImages = document.querySelectorAll('#resumeContainer .resume-cv-image');
+                    allImages.forEach((img, idx) => {
+                        const link = document.createElement('a');
+                        link.download = allImages.length > 1 ? `resume_page${idx + 1}.jpg` : 'resume.jpg';
+                        link.href = img.src;
+                        link.click();
+                    });
                 } else {
                     alert('Please upload a CV image first in Admin Panel');
                 }
