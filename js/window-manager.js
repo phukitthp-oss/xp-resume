@@ -491,17 +491,17 @@ class WindowManager {
         const zoomBtn = document.getElementById('resumeZoomBtn');
         if (zoomBtn) {
             zoomBtn.addEventListener('click', () => {
-                const cvImg = document.getElementById('resumeCV');
-                if (cvImg) {
+                const container = document.getElementById('resumeContainer');
+                if (container) {
                     // Zoom: 1x → 1.5x → 2x → 1x (no zoom out below 100%)
                     if (zoomLevel >= 2) {
                         zoomLevel = 1;
                     } else {
                         zoomLevel += 0.5;
                     }
-                    cvImg.style.transform = `scale(${zoomLevel})`;
-                    cvImg.style.transformOrigin = 'top center';
-                    cvImg.style.transition = 'transform 0.3s ease';
+                    container.style.transform = `scale(${zoomLevel})`;
+                    container.style.transformOrigin = 'top center';
+                    container.style.transition = 'transform 0.3s ease';
                 }
             });
         }
@@ -529,13 +529,15 @@ class WindowManager {
             printBtn.addEventListener('click', () => {
                 const cvImg = document.getElementById('resumeCV');
                 if (cvImg && cvImg.src && !cvImg.src.includes('data:image/svg+xml')) {
+                    const allImages = document.querySelectorAll('#resumeContainer .resume-cv-image');
+                    const imgTags = Array.from(allImages).map(img =>
+                        `<img src="${img.src}" style="max-width:100%; height:auto; display:block; page-break-after:always;">`
+                    ).join('');
                     const printWindow = window.open('', '_blank');
                     printWindow.document.write(`
                         <html>
                         <head><title>Print Resume</title></head>
-                        <body style="margin:0; display:flex; justify-content:center;">
-                            <img src="${cvImg.src}" style="max-width:100%; height:auto;">
-                        </body>
+                        <body style="margin:0;">${imgTags}</body>
                         </html>
                     `);
                     printWindow.document.close();
@@ -567,20 +569,21 @@ class WindowManager {
         
         // Click on image to zoom
         const cvImg = document.getElementById('resumeCV');
-        if (cvImg) {
-            cvImg.style.cursor = 'zoom-in';
-            cvImg.addEventListener('click', () => {
+        const resumeContainer = document.getElementById('resumeContainer');
+        if (cvImg && resumeContainer) {
+            resumeContainer.style.cursor = 'zoom-in';
+            resumeContainer.addEventListener('click', () => {
                 // Zoom: 1x → 1.5x → 2x → 1x
                 if (zoomLevel >= 2) {
                     zoomLevel = 1;
-                    cvImg.style.cursor = 'zoom-in';
+                    resumeContainer.style.cursor = 'zoom-in';
                 } else {
                     zoomLevel += 0.5;
-                    if (zoomLevel >= 2) cvImg.style.cursor = 'zoom-out';
+                    if (zoomLevel >= 2) resumeContainer.style.cursor = 'zoom-out';
                 }
-                cvImg.style.transform = `scale(${zoomLevel})`;
-                cvImg.style.transformOrigin = 'top center';
-                cvImg.style.transition = 'transform 0.3s ease';
+                resumeContainer.style.transform = `scale(${zoomLevel})`;
+                resumeContainer.style.transformOrigin = 'top center';
+                resumeContainer.style.transition = 'transform 0.3s ease';
             });
         }
     }
