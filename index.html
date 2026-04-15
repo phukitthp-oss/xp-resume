@@ -67,16 +67,16 @@
         <section class="mv-section mv-hidden" id="mv-about">
             <div class="mv-about-content">
                 <div class="mv-about-block">
-                    <p class="mv-about-text" id="mvAboutParagraph1">I'm Phukit T., a visual designer. I tackle diverse design challenges and focus on bringing ideas to life, whether that's solving problems for clients or exploring ambitious concepts like recreating an entire operating system in a browser.</p>
+                    <p class="mv-about-text" id="mvAboutParagraph1">I'm Phukit, an accountant from Bangkok, Thailand, with hands-on experience in accounting, finance, and international business environments.</p>
                 </div>
                 <div class="mv-about-block">
-                    <p class="mv-about-text" id="mvAboutParagraph2">Growing up in New Zealand, I saw how powerful design could be through sport, particularly with rugby and the All Blacks. Every jersey, every logo, every piece of visual identity carried the weight of a nation's pride.</p>
+                    <p class="mv-about-text" id="mvAboutParagraph2">My goal is to transition into the audit field, applying my understanding of ISO 9001 business process cycles and COSO-based internal control frameworks.</p>
                 </div>
                 <div class="mv-about-block">
-                    <p class="mv-about-text" id="mvAboutParagraph3">After committing to design in my twenties, I completed a Diploma of Graphic Design at Queensland TAFE and started working with clients on anything from event video packages to front-end UI projects.</p>
+                    <p class="mv-about-text" id="mvAboutParagraph3">While audit is a new direction, I pick up complex systems quickly and am committed to building expertise toward becoming a CPA.</p>
                 </div>
                 <div class="mv-about-block">
-                    <p class="mv-about-text" id="mvAboutParagraph4">I first discovered focus, discipline, and the drive to constantly push standards through playing rugby and design brought all of that back. I'm obsessed with details, process, and raising my own bar with every project.</p>
+                    <p class="mv-about-text" id="mvAboutParagraph4">With these foundations, I'm ready to contribute meaningfully to audit objectives and deliver real value to the organization.</p>
                 </div>
             </div>
         </section>
@@ -668,12 +668,7 @@
                 }
             });
 
-            // About paragraphs
-            for (var i = 1; i <= 4; i++) {
-                var src = document.getElementById('aboutParagraph' + i);
-                var dst = document.getElementById('mvAboutParagraph' + i);
-                if (src && dst && src.textContent.trim()) dst.textContent = src.textContent;
-            }
+            // About paragraphs — mobile has its own content, skip desktop sync
 
             // Skills
             var srcSkills = document.getElementById('aboutSkills');
