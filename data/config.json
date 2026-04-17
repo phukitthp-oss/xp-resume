@@ -47,16 +47,18 @@
     "vignetteOpacity": 0,
     "brightness": 100
   },
-  "images": {},
+  "images": {
+    "wallpaper": "assets/images/wallpaper-custom.png"
+  },
   "resume": {
     "bgColor": "#ffffff"
   },
   "aboutMe": {
     "title": "About Me",
-    "paragraph1": "",
-    "paragraph2": "",
-    "paragraph3": "",
-    "paragraph4": "",
+    "paragraph1": "I'm Phukit, an accountant from Bangkok, Thailand, with hands-on experience in accounting, finance, and international business environments.",
+    "paragraph2": "My goal is to transition into the audit field, applying my understanding of ISO 9001 business process cycles and COSO-based internal control frameworks.",
+    "paragraph3": "While audit is a new direction, I pick up complex systems quickly and am committed to building expertise toward becoming a CPA.",
+    "paragraph4": "With these foundations, I'm ready to contribute meaningfully to audit objectives and deliver real value to the organization.",
     "skillsTitle": "Skills",
     "skills": "",
     "softwareTitle": "Software",
