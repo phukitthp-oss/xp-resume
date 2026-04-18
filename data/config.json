@@ -2,18 +2,19 @@
   "content": {
     "bootTitle": "Phukit T.",
     "bootTitleSuffix": "xp",
-    "bootSubtitle": "Visual Designer",
+    "bootSubtitle": "Accountant & Aspiring Auditor",
     "bootHint": "For the best experience\nEnter Full Screen (F11)",
     "bootPortfolio": "Portfolio®",
     "loginTitle": "Phukit T.",
     "loginTitleSuffix": "xp",
-    "loginSubtitle": "Visual Designer",
+    "loginSubtitle": "Accountant & Aspiring Auditor",
     "userName": "Phukit T.",
-    "userRole": "Visual Designer"
+    "userRole": "Accountant & Aspiring Auditor"
   },
   "profile": {
-    "email": "",
-    "location": "",
+    "email": "Phukit.thp@gmail.com",
+    "location": "168/3 Pranakorn Bangkok 10200",
+    "phone": "0955390523",
     "instagram": "",
     "github": "",
     "linkedin": ""
@@ -21,7 +22,7 @@
   "bootText": {
     "left": "Phukit T.",
     "right": "xp",
-    "subtitle": "Visual Designer",
+    "subtitle": "Accountant & Aspiring Auditor",
     "bottomLeft": "For the best experience\nEnter Full Screen (F11)",
     "bottomRight": "Portfolio®",
     "fontName": 72,
@@ -60,9 +61,9 @@
     "paragraph3": "While audit is a new direction, I pick up complex systems quickly and am committed to building expertise toward becoming a CPA.",
     "paragraph4": "With these foundations, I'm ready to contribute meaningfully to audit objectives and deliver real value to the organization.",
     "skillsTitle": "Skills",
-    "skills": "",
+    "skills": "🎨 Accounting\n🌐 Coso - Internal Control\n📱 ISO 9001 - QMS\n🎬 Create Website\n🖥️ Create Dash Board\n💡 Creative Thinking",
     "softwareTitle": "Software",
-    "software": "",
+    "software": "🎨 Microsoft Excel\n💻 Database\n🤖 Python\n🧠 Peak Accounting\n🌐 Deploy Website",
     "sidebarColor": "#1a3c5e",
     "mainColor": "#f0f4f8",
     "titleSize": 28,
